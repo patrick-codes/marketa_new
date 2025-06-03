@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 
@@ -40,53 +42,111 @@ class _SplashScreenState extends State<SplashScreen>
   void splashController() async {
     await Future.delayed(Duration(seconds: 6));
     if (mounted) {
-      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/onboarding', (route) => false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       bottomNavigationBar: SizedBox(
         height: 40,
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
+              "Version.0.0.1",
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: subtitleColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 8,
+                  ),
+            ),
+            Text(
               "Copyright @Unzip Software Solutions",
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: secondaryColor3,
+                    color: subtitleColor,
+                    fontWeight: FontWeight.w600,
                     fontSize: 8,
                   ),
             ),
           ],
         ),
       ),
-      body: SafeArea(
-        child: Center(
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Marketa",
-                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        color: whiteColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                Text(
-                  "Where Ghana shops!",
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: secondaryColor3,
-                      ),
-                ),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            color: primaryColor.withOpacity(0.9),
+            child: Image.asset(
+              "assets/images/bg.png",
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
             ),
           ),
-        ),
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+              child: Container(
+                color: primaryColor.withOpacity(0.95),
+              ),
+            ),
+          ),
+          Positioned(
+            child: Center(
+              child: SlideTransition(
+                position: _slideAnimation,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Marketa",
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                            color: whiteColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    Text(
+                      "Shop home, from home!",
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: secondaryColor3,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+
+        // SafeArea(
+        //   child: Center(
+        //     child: SlideTransition(
+        //       position: _slideAnimation,
+        //       child: Column(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         children: [
+        //           Text(
+        //             "Marketa",
+        //             style: Theme.of(context).textTheme.displaySmall!.copyWith(
+        //                   color: whiteColor,
+        //                   fontWeight: FontWeight.bold,
+        //                 ),
+        //           ),
+        //           Text(
+        //             "Where Ghana shops!",
+        //             style: Theme.of(context).textTheme.bodySmall!.copyWith(
+        //                   color: secondaryColor3,
+        //                 ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ),
     );
   }

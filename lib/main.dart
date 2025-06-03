@@ -8,8 +8,8 @@ import 'helpers/color/colors.dart';
 import 'presentation/authentication/pages/otp_screen.dart';
 import 'presentation/authentication/pages/register_screen.dart';
 import 'presentation/home/home.dart';
+import 'presentation/intro/pages/splash_screen.dart';
 import 'presentation/intro/pages/welcome_screen.dart';
-import 'presentation/intro/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

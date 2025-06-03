@@ -2,8 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'components/home_slide_imgs.dart';
 
 class MyHomePage extends StatefulWidget {

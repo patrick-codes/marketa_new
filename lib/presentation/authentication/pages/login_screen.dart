@@ -233,7 +233,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 40),
                 CustomButton(
                   text: 'Create Account',
-                  onpressed: () {},
+                  onpressed: () {
+                    Navigator.pushNamed(context, '/mainhome');
+                  },
                   color: primaryColor,
                 ),
                 SizedBox(height: 22),

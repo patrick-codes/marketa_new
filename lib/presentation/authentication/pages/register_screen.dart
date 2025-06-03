@@ -254,7 +254,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 40),
                 CustomButton(
                   text: 'Create Account',
-                  onpressed: () {},
+                  onpressed: () {
+                    Navigator.pushNamed(context, '/mainhome');
+                  },
                   color: primaryColor,
                 ),
                 SizedBox(height: 22),
