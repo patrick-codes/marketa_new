@@ -38,7 +38,10 @@ class _SplashScreenState extends State<SplashScreen>
 
   void splashController() async {
     await Future.delayed(Duration(seconds: 6));
-    Navigator.pushNamedAndRemoveUntil(context, '/onboarding', (route) => false);
+    if (mounted) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/onboarding', (route) => false);
+    }
   }
 
   @override

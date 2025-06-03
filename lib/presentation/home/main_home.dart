@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:line_icons/line_icons.dart';
 
 import '../../helpers/color/colors.dart';
 import 'home.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<MainHomePage> createState() => _MainHomePageState();

@@ -61,7 +61,6 @@ class _SearchPageState extends State<SearchPage> {
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value!.isEmpty) {
-                print('Enter Email');
                 return 'Enter Email';
               }
               return null;

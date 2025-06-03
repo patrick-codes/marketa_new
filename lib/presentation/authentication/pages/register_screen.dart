@@ -98,7 +98,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         focusNode: _focusNode1,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            print('Enter Username');
                             return 'Enter Username';
                           }
                           return null;
@@ -153,7 +152,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            print('Enter Email');
                             return 'Enter Email';
                           }
                           return null;
@@ -208,7 +206,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         obscureText: true,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            print('Enter Password');
                             return 'Enter Password';
                           }
                           return null;

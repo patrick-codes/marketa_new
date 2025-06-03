@@ -4,6 +4,8 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'components/home_slide_imgs.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -13,7 +15,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   late TabController tabController;
-  static final _controller = PageController();
 
   @override
   void initState() {
@@ -35,7 +36,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     "Meriza Kiles",
     "The Mirac Jiz",
   ];
-
   List<String> imgs = <String>[
     "assets/images/img3.jpg",
     "assets/images/img.jpg",
@@ -168,90 +168,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(
-                        height: 170,
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 130,
-                              width: MediaQuery.of(context).size.width,
-                              // padding: const EdgeInsets.symmetric(
-                              //   horizontal: 20,
-                              //   vertical: 20,
-                              // ),
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 5,
-                              ),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset('assets/images/img.jpg')
-                                      .image,
-                                ),
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SizedBox(
-                                  width: 120,
-                                  height: 80,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        textAlign: TextAlign.center,
-                                        softWrap: true,
-                                        overflow: TextOverflow.visible,
-                                        '24% off shipping today on bag purchases',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                              color: whiteColor,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15,
-                                            ),
-                                      ),
-                                      Text(
-                                        textAlign: TextAlign.center,
-                                        softWrap: true,
-                                        overflow: TextOverflow.visible,
-                                        'By Marketa Store',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                              color: Colors.grey.shade400,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 12,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Center(
-                              child: SmoothPageIndicator(
-                                controller: _controller,
-                                count: 3,
-                                effect: ScrollingDotsEffect(
-                                  paintStyle: PaintingStyle.fill,
-                                  activeDotColor: primaryColor,
-                                  dotHeight: 5,
-                                  dotWidth: 5,
-                                  spacing: 5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 15),
+                      TopBannerSection(),
+                      SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -796,9 +714,9 @@ Widget buildShopCard(
 class TitleWidget extends StatelessWidget {
   final String title;
   const TitleWidget({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
