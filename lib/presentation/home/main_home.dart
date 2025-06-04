@@ -1,3 +1,4 @@
+import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -37,55 +38,86 @@ class _MainHomePageState extends State<MainHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: secondaryColor2,
-        bottomNavigationBar: GNav(
+        // GNav(
+        //   selectedIndex: _selectedIndex,
+        //   onTabChange: (index) {
+        //     setState(() {
+        //       _selectedIndex = index;
+        //     });
+        //   },
+        //   backgroundColor: secondaryColor,
+        //   hoverColor: Colors.orange,
+        //   activeColor: primaryColor,
+        //   iconSize: 25,
+        //   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        //   duration: const Duration(milliseconds: 300),
+        //   color: subtitleColor,
+        //   curve: Curves.bounceIn,
+        //   style: GnavStyle.oldSchool,
+        //   tabBorderRadius: 100.0,
+        //   tabMargin: EdgeInsets.all(2),
+        //   textSize: 10,
+        //   gap: 0,
+        //   tabs: [
+        //     GButton(
+        //       icon: _selectedIndex == 0
+        //           ? MingCute.home_1_fill
+        //           : MingCute.home_1_line,
+        //       text: 'Home',
+        //     ),
+        //     GButton(
+        //       icon:
+        //           _selectedIndex == 1 ? MingCute.bike_fill : MingCute.bike_line,
+        //       text: 'Orders',
+        //     ),
+        //     GButton(
+        //       icon: _selectedIndex == 2
+        //           ? MingCute.heart_fill
+        //           : MingCute.heart_line,
+        //       text: 'Favorite',
+        //     ),
+        //     GButton(
+        //       icon: _selectedIndex == 3
+        //           ? MingCute.list_check_3_fill
+        //           : MingCute.list_check_3_line,
+        //       text: 'Bookings',
+        //     ),
+        //     GButton(
+        //       icon: _selectedIndex == 4
+        //           ? MingCute.user_1_fill
+        //           : MingCute.user_1_line,
+        //       text: 'Profile',
+        //     ),
+        //   ],
+        // ),
+        bottomNavigationBar: FlashyTabBar(
           selectedIndex: _selectedIndex,
-          onTabChange: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          backgroundColor: secondaryColor,
-          hoverColor: Colors.orange,
-          activeColor: primaryColor,
-          iconSize: 25,
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          duration: const Duration(milliseconds: 300),
-          color: subtitleColor,
-          curve: Curves.bounceIn,
-          style: GnavStyle.oldSchool,
-          tabBorderRadius: 100.0,
-          tabMargin: EdgeInsets.all(2),
-          textSize: 10,
-          gap: 0,
-          tabs: [
-            GButton(
-              icon: _selectedIndex == 0
-                  ? MingCute.home_1_fill
-                  : MingCute.home_1_line,
-              text: 'Home',
+          showElevation: true,
+          onItemSelected: (index) => setState(() {
+            _selectedIndex = index;
+          }),
+          items: [
+            FlashyTabBarItem(
+              icon: Icon(
+                MingCute.home_1_line,
+              ),
+              title: Text('Home'),
             ),
-            GButton(
-              icon:
-                  _selectedIndex == 1 ? MingCute.bike_fill : MingCute.bike_line,
-              text: 'Orders',
+            FlashyTabBarItem(
+              icon: Icon(MingCute.bike_line),
+              title: Text('Orders'),
             ),
-            GButton(
-              icon: _selectedIndex == 2
-                  ? MingCute.heart_fill
-                  : MingCute.heart_line,
-              text: 'Favorite',
+            FlashyTabBarItem(
+              icon: Icon(MingCute.heart_line),
+              title: Text('Favorite'),
             ),
-            GButton(
-              icon: _selectedIndex == 3
-                  ? MingCute.list_check_3_fill
-                  : MingCute.list_check_3_line,
-              text: 'Bookings',
+            FlashyTabBarItem(
+              icon: Icon(MingCute.store_2_line),
+              title: Text('Stores'),
             ),
-            GButton(
-              icon: _selectedIndex == 4
-                  ? MingCute.user_1_fill
-                  : MingCute.user_1_line,
-              text: 'Profile',
+            FlashyTabBarItem(
+              icon: Icon(MingCute.user_1_fill),
+              title: Text('Profile'),
             ),
           ],
         ),

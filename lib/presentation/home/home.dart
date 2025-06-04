@@ -56,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               automaticallyImplyLeading: false,
               backgroundColor: whiteColor,
               shadowColor: outlineGrey,
-              elevation: 0.2,
               actions: [
                 IconButton(
                   onPressed: () {
@@ -65,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   icon: Icon(
                     MingCute.search_line,
                     size: 22,
-                    color: blackColor,
+                    color: iconGrey,
                   ),
                 ),
                 SizedBox(width: 18),
@@ -73,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   child: Icon(
                     MingCute.notification_line,
                     size: 22,
-                    color: blackColor,
+                    color: iconGrey,
                   ),
                 ),
                 SizedBox(width: 14),
@@ -99,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                         'Lets go shopping!',
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                               fontWeight: FontWeight.w500,
-                              color: subtitleColor,
+                              color: iconGrey,
                               fontSize: 11,
                             ),
                       ),
@@ -108,42 +107,29 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 ],
               ),
               bottom: TabBar(
-                //isScrollable: true,
                 controller: tabController,
-                labelStyle: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-                //unselectedLabelColor: Colors.white,
                 dividerColor: outlineGrey,
-                unselectedLabelStyle: const TextStyle(
-                  color: subtitleColor,
-                ),
+                unselectedLabelColor: subtitleColor,
+                unselectedLabelStyle:
+                    Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: primarySucessShade,
+                          fontWeight: FontWeight.w400,
+                        ),
+                labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      color: primaryColor2,
+                      fontWeight: FontWeight.w400,
+                    ),
                 indicatorColor: primaryColor,
                 indicatorWeight: 3,
                 indicatorSize: TabBarIndicatorSize.label,
-                labelColor: Colors.white,
                 tabs: [
                   Tab(
-                    child: Text(
-                      "Home",
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: blackColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ),
+                    child: Text("Home"),
                   ),
                   Tab(
                     child: Row(
                       children: [
-                        Text(
-                          "Category",
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: blackColor,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
+                        Text("Category"),
                       ],
                     ),
                   ),

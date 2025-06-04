@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:marketa_new/presentation/authentication/pages/login_screen.dart';
 import 'package:marketa_new/presentation/home/main_home.dart';
-import 'package:marketa_new/presentation/intro/onboarding/onboarding_screen.dart';
+import 'package:marketa_new/presentation/intro/pages/onboarding/onboarding_screen.dart';
 import 'package:marketa_new/presentation/search/main_search_page.dart';
 import 'package:marketa_new/presentation/search/search_page.dart';
+import 'package:marketa_new/presentation/store/pages/shop_home.dart';
 import 'helpers/color/colors.dart';
 import 'presentation/authentication/pages/otp_screen.dart';
 import 'presentation/authentication/pages/register_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const MyHomePage(),
         '/search': (context) => const SearchPage(),
         '/mainsearch': (context) => const MainSearchPage(),
+        '/mainshop': (context) => const MainShopHome(),
       },
       // onGenerateRoute: (settings) {
       //   if (settings.name == '/mainshopinfo') {

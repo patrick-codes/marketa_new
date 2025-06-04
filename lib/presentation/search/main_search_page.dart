@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 
+import 'components/filter_screen.dart';
+
 class MainSearchPage extends StatefulWidget {
   const MainSearchPage({super.key});
 
@@ -73,7 +75,8 @@ class _SearchPageState extends State<MainSearchPage> {
       backgroundColor: secondaryBg,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: whiteColor,
+        backgroundColor: secondaryBg,
+        surfaceTintColor: secondaryBg,
         leading: Icon(
           Icons.arrow_back_ios_rounded,
           size: 22,
@@ -86,7 +89,7 @@ class _SearchPageState extends State<MainSearchPage> {
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value!.isEmpty) {
-                return 'Enter Email';
+                return 'Enter something';
               }
               return null;
             },
@@ -101,8 +104,12 @@ class _SearchPageState extends State<MainSearchPage> {
                 size: 23,
                 color: _focusNode4.hasFocus ? blackColor : subtitleColor,
               ),
-              suffixIcon:
-                  Icon(MingCute.filter_2_fill, size: 20, color: blackColor),
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    scrollBottomSheet(context);
+                  },
+                  icon: Icon(MingCute.filter_2_fill,
+                      size: 20, color: blackColor)),
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: primaryBg),
                 borderRadius: BorderRadius.circular(13),
@@ -196,6 +203,9 @@ class _SearchPageState extends State<MainSearchPage> {
                   height: 50,
                   width: MediaQuery.of(context).size.width,
                   child: ListTile(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/mainshop');
+                    },
                     minLeadingWidth: 2,
                     horizontalTitleGap: 8,
                     minTileHeight: 5,
@@ -205,20 +215,46 @@ class _SearchPageState extends State<MainSearchPage> {
                         radius: 30,
                         backgroundImage:
                             Image.asset('assets/images/img.jpg').image),
-                    title: Text(
-                      'Upbox Bag',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
+                    title: Row(
+                      children: [
+                        Text(
+                          'Upbox Bag',
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
+                        SizedBox(width: 5),
+                        Icon(
+                          Icons.verified,
+                          color: primaryColor,
+                          size: 13,
+                        ),
+                      ],
                     ),
-                    subtitle: Text(
-                      '104 Products 1.2k Followers',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: subtitleColor,
-                          ),
+                    subtitle: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '104 Products',
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: subtitleColor,
+                                  ),
+                        ),
+                        Text(
+                          '1.2k Followers',
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: subtitleColor,
+                                  ),
+                        ),
+                      ],
                     ),
                     trailing: Icon(
                       Icons.arrow_forward_ios_rounded,
@@ -227,7 +263,9 @@ class _SearchPageState extends State<MainSearchPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 35),
+                SizedBox(height: 5),
+                Divider(color: outlineGrey),
+                SizedBox(height: 20),
                 GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -340,6 +378,32 @@ class _SearchPageState extends State<MainSearchPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> scrollBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      isDismissible: true,
+      //  isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.9,
+          minChildSize: 0.3,
+          maxChildSize: 0.9,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return FilterScreen();
+          },
+        );
+      },
     );
   }
 }

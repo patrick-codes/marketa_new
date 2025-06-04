@@ -25,7 +25,8 @@ class _TopBannerSectionState extends State<TopBannerSection> {
       child: CarouselSlider(
         options: CarouselOptions(
           height: 180,
-          autoPlay: true,
+          //autoPlay: true,
+
           autoPlayInterval: const Duration(seconds: 5),
           //enlargeCenterPage: true,
         ),
@@ -43,7 +44,6 @@ class _TopBannerSectionState extends State<TopBannerSection> {
                     //   vertical: 20,
                     // ),
                     margin: const EdgeInsets.symmetric(
-                      vertical: 5,
                       horizontal: 5,
                     ),
                     decoration: BoxDecoration(

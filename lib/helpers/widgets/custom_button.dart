@@ -32,10 +32,6 @@ class CustomButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                color: Colors.white,
-              ),
               Text(
                 text,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(

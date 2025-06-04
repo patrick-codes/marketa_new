@@ -49,6 +49,7 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: whiteColor,
+        surfaceTintColor: secondaryBg,
         leading: Icon(
           Icons.arrow_back_ios_rounded,
           size: 22,
@@ -570,6 +571,56 @@ class _SearchPageState extends State<SearchPage> {
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: Colors.green,
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 13),
+                ListTile(
+                  horizontalTitleGap: 10,
+                  minTileHeight: 5,
+                  dense: true,
+                  contentPadding: EdgeInsets.symmetric(horizontal: 5),
+                  leading: Container(
+                    height: 150,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: Image.asset('assets/images/img.jpg').image),
+                    ),
+                  ),
+                  title: Text(
+                    'JBL Speakers',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                  subtitle: Text(
+                    '1k search today',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: subtitleColor,
+                        ),
+                  ),
+                  trailing: Container(
+                    height: 30,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: const Color.fromARGB(197, 255, 237, 192),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'New',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.deepOrange,
                             ),
                       ),
                     ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../helpers/animation/showup_animation.dart';
-import '../../../helpers/color/colors.dart';
-import '../../../helpers/widgets/custom_button.dart';
+import '../../../../helpers/animation/showup_animation.dart';
+import '../../../../helpers/color/colors.dart';
+import '../../../../helpers/widgets/custom_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
