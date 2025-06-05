@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:marketa_new/presentation/authentication/pages/login_screen.dart';
 import 'package:marketa_new/presentation/home/pages/main_home.dart';
-import 'package:marketa_new/presentation/intro/pages/onboarding/onboarding_screen.dart';
+import 'package:marketa_new/presentation/intro/pages/onboarding/pages/onboarding_screen.dart';
 import 'package:marketa_new/presentation/search/main_search_page.dart';
 import 'package:marketa_new/presentation/search/search_page.dart';
+import 'package:marketa_new/presentation/store/pages/shop_details_page.dart';
 import 'package:marketa_new/presentation/store/pages/shop_home.dart';
 import 'helpers/color/colors.dart';
 import 'presentation/authentication/pages/otp_screen.dart';
@@ -19,7 +20,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/search': (context) => const SearchPage(),
         '/mainsearch': (context) => const MainSearchPage(),
         '/mainshop': (context) => const MainShopHome(),
+        '/shopdetails': (context) => const ShopDetailsPage(),
       },
       // onGenerateRoute: (settings) {
       //   if (settings.name == '/mainshopinfo') {
@@ -50,9 +51,6 @@ class MyApp extends StatelessWidget {
       // },
       theme: ThemeData(
         fontFamily: 'Poppins',
-        // textTheme: GoogleFonts.interTextTheme(
-        //   Theme.of(context).textTheme,
-        // ),
         scaffoldBackgroundColor: secondaryBg,
         primarySwatch: Colors.blue,
         useMaterial3: true,

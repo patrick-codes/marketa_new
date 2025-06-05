@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
+import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/helpers/widgets/custom_button.dart';
-
+import 'package:marketa_new/helpers/widgets/custom_textform_field.dart';
 import '../../../helpers/widgets/white_custom_ button.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -59,195 +60,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 30),
-                Text(
-                  textAlign: TextAlign.center,
-                  'Create Account',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                ),
+                headingText(context, 'Create Account'),
                 SizedBox(height: 3),
-                Text(
-                  textAlign: TextAlign.center,
-                  'start shopping by creating an account',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: subtitleColor,
-                        fontSize: 12,
-                      ),
-                ),
+                subheadingText(
+                    context, 'start shopping by creating an account'),
                 SizedBox(height: 30),
                 Form(
                   key: formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        textAlign: TextAlign.center,
-                        'Username',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: blackColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                      ),
+                      labelTextSmall(context, 'Username'),
                       SizedBox(height: 7),
-                      TextFormField(
-                        // controller: SignupController.email,
-                        focusNode: _focusNode1,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Username';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Create your username',
-                          hintStyle:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: subtitleColor,
-                                    fontSize: 12,
-                                  ),
-                          prefixIcon: Icon(
-                            MingCute.user_3_line,
-                            size: 23,
-                            color: _focusNode1.hasFocus
-                                ? primaryColor
-                                : subtitleColor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          filled: true,
-                          isDense: true,
-                          fillColor:
-                              _focusNode1.hasFocus ? whiteColor : primaryBg,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: primaryColor, width: 1.5),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                        ),
+                      textFormField(
+                        context,
+                        'Create Username',
+                        MingCute.user_3_line,
+                        TextInputType.text,
+                        _focusNode1,
                       ),
                       SizedBox(height: 20),
-                      Text(
-                        textAlign: TextAlign.center,
-                        'Email',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: blackColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                      ),
+                      labelTextSmall(context, 'Email'),
                       SizedBox(height: 7),
-                      TextFormField(
-                        // controller: SignupController.email,
-                        focusNode: _focusNode2,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Email';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Enter your email',
-                          hintStyle:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: subtitleColor,
-                                    fontSize: 12,
-                                  ),
-                          prefixIcon: Icon(
-                            MingCute.mail_line,
-                            size: 23,
-                            color: _focusNode2.hasFocus
-                                ? primaryColor
-                                : subtitleColor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          filled: true,
-                          isDense: true,
-                          fillColor:
-                              _focusNode2.hasFocus ? whiteColor : primaryBg,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: primaryColor, width: 1.5),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                        ),
-                      ),
+                      emailtextFormField(context, _focusNode2),
                       SizedBox(height: 20),
-                      Text(
-                        textAlign: TextAlign.center,
-                        'Password',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: blackColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                      ),
+                      labelTextSmall(context, 'Password'),
                       SizedBox(height: 7),
-                      TextFormField(
-                        // controller: SignupController.email,
-                        focusNode: _focusNode3,
-                        obscureText: true,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Password';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Enter your password',
-                          hintStyle:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: subtitleColor,
-                                    fontSize: 12,
-                                  ),
-                          prefixIcon: Icon(
-                            MingCute.lock_line,
-                            size: 23,
-                            color: _focusNode3.hasFocus
-                                ? primaryColor
-                                : subtitleColor,
-                          ),
-                          suffixIcon: Icon(
-                            Icons.visibility_outlined,
-                            size: 23,
-                            color: subtitleColor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          filled: true,
-                          isDense: true,
-                          fillColor:
-                              _focusNode3.hasFocus ? whiteColor : primaryBg,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: primaryColor, width: 1.5),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                        ),
-                      ),
+                      passwordTextFormField(context, _focusNode3)
                     ],
                   ),
                 ),
@@ -263,14 +102,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      textAlign: TextAlign.center,
-                      'Or using other method',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: subtitleColor,
-                            fontSize: 12,
-                          ),
-                    ),
+                    labelTextFaint(context, 'Or using other method'),
                   ],
                 ),
                 SizedBox(height: 22),

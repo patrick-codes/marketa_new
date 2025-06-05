@@ -2,7 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
+import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/presentation/category/pages/category.dart';
+import '../../../helpers/images/image_helpers.dart';
 import '../components/home_component.dart';
 import '../components/home_slide_imgs.dart';
 
@@ -66,28 +68,15 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               title: Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/img3.jpg'),
+                    backgroundImage: AssetImage(onboardingImg3),
                   ),
                   SizedBox(width: 5),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Hi, Jonathan',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                      ),
-                      Text(
-                        'Lets go shopping!',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: iconGrey,
-                              fontSize: 11,
-                            ),
-                      ),
+                      appbarText(context, 'Hi, Jonathan'),
+                      appbarSubText(context, 'Lets go shopping', 11),
                     ],
                   )
                 ],

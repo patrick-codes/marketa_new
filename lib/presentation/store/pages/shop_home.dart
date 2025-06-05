@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:marketa_new/helpers/widgets/custom_appbar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../helpers/color/colors.dart';
@@ -51,24 +52,15 @@ class _MainShopHomeState extends State<MainShopHome>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: secondaryBg,
-      appBar: AppBar(
-        backgroundColor: secondaryBg,
-        shadowColor: outlineGrey,
-        elevation: 0.2,
-        centerTitle: true,
-        title: Text(
-          'Store',
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                fontWeight: FontWeight.w500,
-                fontSize: 17,
-              ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: CustomAppBar(
+          title: 'Store',
+          actions: [
+            Icon(MingCute.shopping_bag_3_line),
+            SizedBox(width: 12),
+          ],
         ),
-        actions: [
-          Icon(
-            MingCute.shopping_bag_3_line,
-          ),
-          SizedBox(width: 13),
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -210,21 +202,27 @@ class _MainShopHomeState extends State<MainShopHome>
                               height: 160,
                               child: Column(
                                 children: [
-                                  Container(
-                                    height: 130,
-                                    width: MediaQuery.of(context).size.width,
-                                    margin: const EdgeInsets.symmetric(
-                                      horizontal: 5,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.asset(
-                                                'assets/images/banner2.png')
-                                            .image,
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, '/shopdetails');
+                                    },
+                                    child: Container(
+                                      height: 130,
+                                      width: MediaQuery.of(context).size.width,
+                                      margin: const EdgeInsets.symmetric(
+                                        horizontal: 5,
                                       ),
-                                      color: Colors.grey.shade300,
-                                      borderRadius: BorderRadius.circular(10),
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: Image.asset(
+                                                  'assets/images/banner2.png')
+                                              .image,
+                                        ),
+                                        color: Colors.grey.shade300,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
                                     ),
                                   ),
                                 ],

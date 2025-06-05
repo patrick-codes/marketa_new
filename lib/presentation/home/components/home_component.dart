@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-
+import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import '../../../helpers/color/colors.dart';
 import 'home_slide_imgs.dart';
 
@@ -45,24 +45,8 @@ class _HomeComponentState extends State<HomeComponent> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  textAlign: TextAlign.center,
-                  'New Arrivals',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14,
-                      ),
-                ),
-                Text(
-                  textAlign: TextAlign.center,
-                  'See All',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: primaryColor,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 11.5,
-                      ),
-                ),
+                headingTextSemiBold(context, 'New Arrivals'),
+                labelseeAllText(context, 'See All'),
               ],
             ),
             SizedBox(height: 10),
@@ -152,17 +136,7 @@ class _HomeComponentState extends State<HomeComponent> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'GHC 195.00',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12,
-                                    color: blackColor,
-                                  ),
-                            ),
+                            headingTextSemiBold2(context, 'GHC 195.00'),
                           ],
                         ),
                       ],

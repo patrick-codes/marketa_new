@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../../../helpers/animation/showup_animation.dart';
-import '../../../../helpers/color/colors.dart';
-import '../../../../helpers/widgets/custom_button.dart';
+import '../../../../../helpers/animation/showup_animation.dart';
+import '../../../../../helpers/color/colors.dart';
+import '../../../../../helpers/text style/text_style.dart';
+import '../../../../../helpers/widgets/custom_button.dart';
+import '../repository/model/onboarding_model.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -13,16 +14,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  TitleText? titleText;
   static final _controller = PageController();
-  List<String> images = [
-    "assets/images/img1.jpg",
-    "assets/images/img.jpg",
-    "assets/images/img2.jpg",
-    // "assets/images/img3.jpg",
-    // "assets/images/img4.jpg",
-    // "assets/images/img5.jpg",
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +53,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               onTap: () {
                 Navigator.pushNamed(context, '/login');
               },
-              child: Text(
-                'Already Have an Account?',
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: primaryColor,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 13,
-                    ),
-              ),
+              child: labelTextSemiBold(context, 'Already Have an Account?'),
             ),
           ],
         ),
@@ -107,24 +92,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    Text(
-                      textAlign: TextAlign.center,
-                      info.title,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: blackColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 19,
-                          ),
-                    ),
+                    headingTextMedium(context, info.title),
                     SizedBox(height: 20),
-                    Text(
-                      textAlign: TextAlign.center,
-                      info.subtitle,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: subtitleColor,
-                            fontSize: 15,
-                          ),
-                    ),
+                    subheadingTextMedium(context, info.subtitle),
                   ],
                 );
               },
@@ -135,36 +105,3 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 }
-
-class TitleText {
-  String title;
-  String subtitle;
-  String img;
-
-  TitleText({
-    required this.title,
-    required this.subtitle,
-    required this.img,
-  });
-}
-
-List<TitleText> infos = [
-  TitleText(
-    title: "Various Collections Of The Latest Products ",
-    subtitle:
-        "Delivers messages faster than any other application The world's fastest messaging app. It is free and secure.",
-    img: "assets/images/img3.jpg",
-  ),
-  TitleText(
-    title: "Complete Collection Of Colors And Sizes",
-    subtitle:
-        "Delivers messages faster than any other application The world's fastest messaging app. It is free and secure.",
-    img: "assets/images/img10.jpg",
-  ),
-  TitleText(
-    title: "Find the most Suitable Stuffs For Yourself",
-    subtitle:
-        "Delivers messages faster than any other application The world's fastest messaging app. It is free and secure.",
-    img: "assets/images/img11.jpg",
-  ),
-];

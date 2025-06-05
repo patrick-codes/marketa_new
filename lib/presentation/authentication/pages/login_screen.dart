@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
+import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/helpers/widgets/custom_button.dart';
+import 'package:marketa_new/helpers/widgets/custom_textform_field.dart';
 import 'package:marketa_new/presentation/authentication/components/password_reset_component.dart';
 
 import '../../../helpers/widgets/white_custom_ button.dart';
@@ -67,142 +69,23 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 30),
-                Text(
-                  textAlign: TextAlign.center,
-                  'Login Account',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: blackColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                ),
+                headingText(context, 'Login Account'),
                 SizedBox(height: 3),
-                Text(
-                  textAlign: TextAlign.center,
-                  'Please login with your registered credentials',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: subtitleColor,
-                        fontSize: 12,
-                      ),
-                ),
+                subheadingText(
+                    context, 'Please login with your registered credentials'),
                 SizedBox(height: 30),
                 Form(
                   key: formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        textAlign: TextAlign.center,
-                        'Email',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: blackColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                      ),
+                      labelTextSmall(context, 'Email'),
                       SizedBox(height: 7),
-                      TextFormField(
-                        // controller: SignupController.email,
-                        focusNode: _focusNode2,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Email';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Enter your email',
-                          hintStyle:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: subtitleColor,
-                                    fontSize: 12,
-                                  ),
-                          prefixIcon: Icon(
-                            MingCute.mail_line,
-                            size: 23,
-                            color: _focusNode2.hasFocus
-                                ? primaryColor
-                                : subtitleColor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          filled: true,
-                          isDense: true,
-                          fillColor:
-                              _focusNode2.hasFocus ? whiteColor : primaryBg,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: primaryColor, width: 1.5),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                        ),
-                      ),
+                      emailtextFormField(context, _focusNode2),
                       SizedBox(height: 20),
-                      Text(
-                        textAlign: TextAlign.center,
-                        'Password',
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: blackColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                            ),
-                      ),
+                      labelTextSmall(context, 'Password'),
                       SizedBox(height: 7),
-                      TextFormField(
-                        // controller: SignupController.email,
-                        focusNode: _focusNode3,
-                        obscureText: true,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Enter Password';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Enter your password',
-                          hintStyle:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: subtitleColor,
-                                    fontSize: 12,
-                                  ),
-                          prefixIcon: Icon(
-                            MingCute.lock_line,
-                            size: 23,
-                            color: _focusNode3.hasFocus
-                                ? primaryColor
-                                : subtitleColor,
-                          ),
-                          suffixIcon: Icon(
-                            Icons.visibility_outlined,
-                            size: 23,
-                            color: subtitleColor,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          filled: true,
-                          isDense: true,
-                          fillColor:
-                              _focusNode3.hasFocus ? whiteColor : primaryBg,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: primaryColor, width: 1.5),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: primaryBg),
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                        ),
-                      ),
+                      passwordTextFormField(context, _focusNode3),
                       SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
@@ -216,18 +99,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
-                              textAlign: TextAlign.center,
+                            labelTextRegular(
+                              context,
                               'Forgot Password?',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: primaryColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 13,
-                                  ),
-                            ),
+                              primaryColor,
+                            )
                           ],
                         ),
                       ),
@@ -246,14 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      textAlign: TextAlign.center,
-                      'Or using other method',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: subtitleColor,
-                            fontSize: 12,
-                          ),
-                    ),
+                    labelTextFaint(context, 'Or using other method'),
                   ],
                 ),
                 SizedBox(height: 22),
