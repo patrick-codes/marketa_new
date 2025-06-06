@@ -33,7 +33,7 @@ class _TopBannerSectionState extends State<TopBannerSection> {
         items: images.map((e) {
           return Builder(
             builder: (BuildContext context) => SizedBox(
-              height: 175,
+              height: 170,
               child: Column(
                 children: [
                   Container(
@@ -55,7 +55,7 @@ class _TopBannerSectionState extends State<TopBannerSection> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 7),
                   Center(
                     child: SmoothPageIndicator(
                       controller: _controller,

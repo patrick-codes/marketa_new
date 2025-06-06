@@ -41,7 +41,6 @@ class _HomeComponentState extends State<HomeComponent> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             TopBannerSection(),
-            SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -49,7 +48,7 @@ class _HomeComponentState extends State<HomeComponent> {
                 labelseeAllText(context, 'See All'),
               ],
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             GridView.builder(
               shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

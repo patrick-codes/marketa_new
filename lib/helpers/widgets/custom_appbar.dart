@@ -21,6 +21,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return AppBar(
       backgroundColor: secondaryBg,
       shadowColor: outlineGrey,
+      scrolledUnderElevation: 0.0,
       elevation: 0.2,
       centerTitle: true,
       title: appbarText(context, widget.title),

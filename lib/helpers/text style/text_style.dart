@@ -114,9 +114,12 @@ appbarSubText(context, String text, double size) {
   );
 }
 
-subheadingText(context, String text) {
+subheadingText(context, String text, [TextAlign? align]) {
   return Text(
-    textAlign: TextAlign.center,
+    textAlign: align ?? TextAlign.center,
+    softWrap: true,
+    overflow: TextOverflow.ellipsis,
+    maxLines: 2,
     text,
     style: Theme.of(context).textTheme.bodySmall!.copyWith(
           color: subtitleColor,
@@ -194,14 +197,17 @@ labelTextSemiBold(context, String text) {
   );
 }
 
-labelseeAllText(context, String text) {
-  return Text(
-    textAlign: TextAlign.center,
-    text,
-    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-          color: primaryColor,
-          fontWeight: FontWeight.w600,
-          fontSize: 11.5,
-        ),
+labelseeAllText(context, String text, [void Function()? onpressed]) {
+  return TextButton(
+    onPressed: onpressed,
+    child: Text(
+      textAlign: TextAlign.center,
+      text,
+      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+            color: primaryColor,
+            fontWeight: FontWeight.w600,
+            fontSize: 11.5,
+          ),
+    ),
   );
 }

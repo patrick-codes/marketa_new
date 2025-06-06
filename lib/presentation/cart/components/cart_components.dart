@@ -123,9 +123,10 @@ class CartComponent {
                     CustomButton(
                       text: 'Checkout',
                       onpressed: () {
-                        if (couponFormKey.currentState!.validate()) {
-                          // Navigator.pop(context);
-                        }
+                        Navigator.pushNamed(context, '/checkout');
+                        // if (couponFormKey.currentState!.validate()) {
+                        //   // Navigator.pop(context);
+                        // }
                       },
                       color: primaryColor,
                     ),
