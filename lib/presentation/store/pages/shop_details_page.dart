@@ -2,11 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
+import 'package:marketa_new/helpers/widgets/custom_bottomnav_button.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../helpers/images/image_helpers.dart';
 import '../../../helpers/widgets/custom_appbar.dart';
 
 class ShopDetailsPage extends StatelessWidget {
-  const ShopDetailsPage({super.key});
+  ShopDetailsPage({super.key});
 
+  static final _controller = PageController();
+  final List<String> imgs = <String>[
+    itemImg1,
+    itemImg2,
+    itemImg3,
+  ];
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,6 +32,32 @@ class ShopDetailsPage extends StatelessWidget {
             ),
           ),
           backgroundColor: secondaryBg,
+          bottomNavigationBar: Container(
+            padding: EdgeInsets.all(10),
+            height: 75,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              border: Border.all(color: primaryContainerShade),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    appbarSubText(context, 'Price', 15),
+                    headingTextMedium(context, 'GHC 45.25'),
+                  ],
+                ),
+                CustomNavButton(
+                    text: 'Add to Cart',
+                    onpressed: () {
+                      Navigator.pushNamed(context, '/cart');
+                    },
+                    color: primaryColor),
+              ],
+            ),
+          ),
           body: SafeArea(
             child: SingleChildScrollView(
               physics: ClampingScrollPhysics(),
@@ -32,15 +67,48 @@ class ShopDetailsPage extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * 0.40,
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(20),
-                          image: const DecorationImage(
-                            image: AssetImage("assets/images/img6.jpg"),
-                            fit: BoxFit.cover,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        child: PageView.builder(
+                          controller: _controller,
+                          itemCount: imgs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: MediaQuery.of(context).size.height * 0.35,
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(imgs[index]),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 5,
+                        child: SizedBox(
+                          height: 30,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SmoothPageIndicator(
+                                controller: _controller,
+                                count: 3,
+                                effect: JumpingDotEffect(
+                                  paintStyle: PaintingStyle.stroke,
+                                  activeDotColor: primaryColor,
+                                  dotHeight: 8,
+                                  dotWidth: 8,
+                                  spacing: 8,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -165,7 +233,7 @@ class ShopDetailsPage extends StatelessWidget {
                             height: 35,
                             width: 85,
                             decoration: BoxDecoration(
-                              color: primaryColor,
+                              border: Border.all(color: outlineGrey),
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Center(
@@ -176,7 +244,7 @@ class ShopDetailsPage extends StatelessWidget {
                                     .bodySmall!
                                     .copyWith(
                                       fontSize: 12,
-                                      color: whiteColor,
+                                      color: primaryColor,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -189,7 +257,7 @@ class ShopDetailsPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            headingTextSemiBold(context, 'Choose amount:'),
+                            headingTextSemiBold(context, 'Quantity:'),
                             Container(
                               height: 40,
                               width: 90,
@@ -208,6 +276,15 @@ class ShopDetailsPage extends StatelessWidget {
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
+                                    SizedBox(width: 14),
+                                    Text(
+                                      '1',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    SizedBox(width: 14),
                                     Icon(Icons.add),
                                   ],
                                 ),

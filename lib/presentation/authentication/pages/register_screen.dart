@@ -4,7 +4,7 @@ import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/helpers/widgets/custom_button.dart';
 import 'package:marketa_new/helpers/widgets/custom_textform_field.dart';
-import '../../../helpers/widgets/white_custom_ button.dart';
+import '../../../helpers/widgets/outlined_custom_ button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

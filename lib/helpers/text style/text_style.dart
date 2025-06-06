@@ -30,14 +30,14 @@ headingText(context, String text) {
   );
 }
 
-headingTextMedium(context, String text) {
+headingTextMedium(context, String text, [FontWeight? weight, double? size]) {
   return Text(
     textAlign: TextAlign.center,
     text,
     style: Theme.of(context).textTheme.bodySmall!.copyWith(
           color: blackColor,
-          fontWeight: FontWeight.bold,
-          fontSize: 19,
+          fontWeight: weight ?? FontWeight.bold,
+          fontSize: size ?? 19,
         ),
   );
 }
@@ -61,6 +61,21 @@ headingTextSemiBold(context, String text) {
     style: Theme.of(context).textTheme.bodySmall!.copyWith(
           color: blackColor,
           fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+  );
+}
+
+headingCustomSemiBold(context, String text, [FontWeight? weight]) {
+  return Text(
+    textAlign: TextAlign.start,
+    softWrap: true,
+    overflow: TextOverflow.ellipsis,
+    maxLines: 2,
+    text,
+    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          color: blackColor,
+          fontWeight: weight ?? FontWeight.bold,
           fontSize: 14,
         ),
   );

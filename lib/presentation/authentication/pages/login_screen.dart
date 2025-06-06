@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/helpers/widgets/custom_button.dart';
 import 'package:marketa_new/helpers/widgets/custom_textform_field.dart';
 import 'package:marketa_new/presentation/authentication/components/password_reset_component.dart';
 
-import '../../../helpers/widgets/white_custom_ button.dart';
+import '../../../helpers/widgets/outlined_custom_ button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

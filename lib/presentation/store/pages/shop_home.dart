@@ -2,10 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/widgets/custom_appbar.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../helpers/color/colors.dart';
-import '../../home/components/home_slide_imgs.dart';
 
 class MainShopHome extends StatefulWidget {
   const MainShopHome({super.key});
@@ -17,7 +14,6 @@ class MainShopHome extends StatefulWidget {
 class _MainShopHomeState extends State<MainShopHome>
     with TickerProviderStateMixin {
   late TabController tabController;
-  static final _controller = PageController();
 
   @override
   void initState() {

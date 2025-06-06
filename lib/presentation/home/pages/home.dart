@@ -6,7 +6,6 @@ import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/presentation/category/pages/category.dart';
 import '../../../helpers/images/image_helpers.dart';
 import '../components/home_component.dart';
-import '../components/home_slide_imgs.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

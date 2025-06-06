@@ -108,7 +108,7 @@ passwordTextFormField(context, FocusNode node,
       prefixIcon: Icon(
         MingCute.lock_line,
         size: 23,
-        color: node!.hasFocus ? primaryColor : subtitleColor,
+        color: node.hasFocus ? primaryColor : subtitleColor,
       ),
       suffixIcon: Icon(
         Icons.visibility_outlined,
