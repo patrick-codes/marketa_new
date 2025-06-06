@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marketa_new/presentation/authentication/pages/login_screen.dart';
 import 'package:marketa_new/presentation/cart/pages/cart_page.dart';
+import 'package:marketa_new/presentation/checkout/pages/add_card.dart';
 import 'package:marketa_new/presentation/checkout/pages/checkout.dart';
 import 'package:marketa_new/presentation/home/pages/main_home.dart';
 import 'package:marketa_new/presentation/intro/pages/onboarding/pages/onboarding_screen.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/shopdetails': (context) => ShopDetailsPage(),
         '/cart': (context) => CartPage(),
         '/checkout': (context) => CheckOutPage(),
+        '/addcard': (context) => AddCardPage(),
       },
       // onGenerateRoute: (settings) {
       //   if (settings.name == '/mainshopinfo') {

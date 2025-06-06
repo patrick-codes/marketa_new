@@ -88,7 +88,7 @@ emailtextFormField(context, FocusNode node,
 }
 
 passwordTextFormField(context, FocusNode node,
-    [TextEditingController? controller]) {
+    [TextEditingController? controller, IconData? prefix, String? hint]) {
   return TextFormField(
     controller: controller,
     obscureText: true,
@@ -100,13 +100,13 @@ passwordTextFormField(context, FocusNode node,
       return null;
     },
     decoration: InputDecoration(
-      hintText: 'Enter your password',
+      hintText: hint ?? 'Enter your password',
       hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
             color: subtitleColor,
             fontSize: 12,
           ),
       prefixIcon: Icon(
-        MingCute.lock_line,
+        prefix ?? MingCute.lock_line,
         size: 23,
         color: node.hasFocus ? primaryColor : subtitleColor,
       ),

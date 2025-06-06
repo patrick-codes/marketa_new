@@ -12,4 +12,10 @@ const String bannerImg1 = "assets/images/banner.png";
 const String bannerImg2 = "assets/images/banner2.png";
 const String bannerImg3 = "assets/images/banner3.png";
 
+const String mtn = "assets/images/mtn.png";
+const String telecel = "assets/images/telecel.png";
+const String at = "assets/images/at.png";
+const String visa = "assets/images/visa.png";
+const String mastercard = "assets/images/mastercard.png";
+
 const String splashBgImg = "assets/images/bg.png";

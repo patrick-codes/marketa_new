@@ -4,9 +4,35 @@ import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import '../../../helpers/color/colors.dart';
 import '../../../helpers/widgets/custom_appbar.dart';
 import '../../../helpers/widgets/custom_button.dart';
+import '../components/checkout_component.dart';
 
-class CheckOutPage extends StatelessWidget {
+class CheckOutPage extends StatefulWidget {
   const CheckOutPage({super.key});
+
+  @override
+  State<CheckOutPage> createState() => _CheckOutPageState();
+}
+
+class _CheckOutPageState extends State<CheckOutPage> {
+  final FocusNode node = FocusNode();
+  GlobalKey<FormState> key = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    node.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    node.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +68,12 @@ class CheckOutPage extends StatelessWidget {
             ),
             SizedBox(height: 8),
             CustomButton(
-                text: 'Checkout Now',
-                onpressed: () {
-                  Navigator.pushNamed(context, '/cart');
-                },
-                color: primaryColor),
+              text: 'Checkout Now',
+              onpressed: () {
+                CheckoutComponent.orderSuccesScrollBottomSheet(context, key);
+              },
+              color: primaryColor,
+            ),
           ],
         ),
       ),
@@ -65,7 +92,9 @@ class CheckOutPage extends StatelessWidget {
                     'Address',
                     FontWeight.bold,
                   ),
-                  labelseeAllText(context, 'Edit', () {}),
+                  labelseeAllText(context, 'Edit', () {
+                    CheckoutComponent.addressBottomSheet(context, node);
+                  }),
                 ],
               ),
               Row(
@@ -174,60 +203,66 @@ class CheckOutPage extends StatelessWidget {
               SizedBox(height: 15),
               headingCustomSemiBold(context, 'Payment Method'),
               SizedBox(height: 15),
-              Container(
-                height: 80,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: outlineGrey),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 60,
-                          width: 60,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(65),
-                            color: primaryContainerShade,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset('assets/images/at.png').image,
+              GestureDetector(
+                onTap: () {
+                  CheckoutComponent.paymentMethodBottomSheet(context);
+                },
+                child: Container(
+                  height: 80,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: outlineGrey),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(65),
+                              color: primaryContainerShade,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image:
+                                    Image.asset('assets/images/at.png').image,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(width: 10),
-                        SizedBox(
-                          height: 60,
-                          width: 240,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              headingCustomSemiBold(
-                                  context, 'AirtelTigo Money', FontWeight.w500),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  subheadingText(context, '******** 1234'),
-                                  Icon(
-                                    MingCute.right_line,
-                                    size: 25,
-                                    color: iconGrey,
-                                  ),
-                                ],
-                              ),
-                            ],
+                          SizedBox(width: 10),
+                          SizedBox(
+                            height: 60,
+                            width: 240,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                headingCustomSemiBold(context,
+                                    'AirtelTigo Money', FontWeight.w500),
+                                SizedBox(height: 5),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    subheadingText(context, '******** 1234'),
+                                    Icon(
+                                      MingCute.right_line,
+                                      size: 25,
+                                      color: iconGrey,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 20),
