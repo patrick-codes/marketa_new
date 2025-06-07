@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import '../../../helpers/color/colors.dart';
 
@@ -165,18 +164,23 @@ class _HomeComponentState extends State<MyorderComponent> {
                           ),
                         ),
                       ),
-                      Container(
-                        height: 35,
-                        width: 130,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            color: primaryColor),
-                        child: Center(
-                          child: subheadingSmallBoldText(
-                            context,
-                            'Tracking',
-                            11,
-                            whiteColor,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/tracking');
+                        },
+                        child: Container(
+                          height: 35,
+                          width: 130,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                              color: primaryColor),
+                          child: Center(
+                            child: subheadingSmallBoldText(
+                              context,
+                              'Tracking',
+                              11,
+                              whiteColor,
+                            ),
                           ),
                         ),
                       ),

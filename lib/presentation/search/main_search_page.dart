@@ -108,7 +108,7 @@ class _SearchPageState extends State<MainSearchPage> {
                   onPressed: () {
                     scrollBottomSheet(context);
                   },
-                  icon: Icon(MingCute.filter_2_fill,
+                  icon: Icon(MingCute.settings_2_line,
                       size: 20, color: blackColor)),
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: primaryBg),

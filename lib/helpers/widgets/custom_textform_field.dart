@@ -19,7 +19,7 @@ textFormField(context, String hintText, IconData prefixIcon, TextInputType type,
       hintText: hintText,
       hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
             color: subtitleColor,
-            fontSize: 12,
+            fontSize: 14,
           ),
       prefixIcon: Icon(
         prefixIcon,
@@ -32,7 +32,7 @@ textFormField(context, String hintText, IconData prefixIcon, TextInputType type,
       ),
       filled: true,
       isDense: true,
-      fillColor: node.hasFocus ? whiteColor : primaryBg,
+      fillColor: node.hasFocus ? whiteColor : whiteColor,
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: primaryColor, width: 1.5),
         borderRadius: BorderRadius.circular(12),

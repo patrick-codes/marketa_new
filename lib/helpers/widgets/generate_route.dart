@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketa_new/presentation/notification/pages/notifications.dart';
+import '../../presentation/ai/chatbot.dart';
 import '../../presentation/authentication/pages/login_screen.dart';
 import '../../presentation/authentication/pages/otp_screen.dart';
 import '../../presentation/authentication/pages/register_screen.dart';
@@ -15,6 +16,7 @@ import '../../presentation/search/main_search_page.dart';
 import '../../presentation/search/search_page.dart';
 import '../../presentation/store/pages/shop_details_page.dart';
 import '../../presentation/store/pages/shop_home.dart';
+import '../../presentation/tracking/pages/order_tracking_page.dart';
 import 'route_transition.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -63,6 +65,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case '/notification':
       return slideFromRight(NotificationPage());
+
+    case '/tracking':
+      return slideFromRight(OrderTrackingPage());
+
+    case '/chatbot':
+      return slideFromRight(ChatbotScreen());
 
     default:
       return MaterialPageRoute(

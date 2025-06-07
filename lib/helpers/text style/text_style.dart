@@ -93,12 +93,13 @@ headingTextSemiBold2(context, String text) {
   );
 }
 
-appbarText(context, String text) {
+appbarText(context, String text, [Color? color]) {
   return Text(
     text,
     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
           fontWeight: FontWeight.w500,
           fontSize: 17,
+          color: color ?? blackColor,
         ),
   );
 }

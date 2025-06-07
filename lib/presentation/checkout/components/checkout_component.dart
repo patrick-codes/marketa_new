@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:lottie/lottie.dart';
 import '../../../helpers/color/colors.dart';
 import '../../../helpers/images/image_helpers.dart';
 import '../../../helpers/text style/text_style.dart';
@@ -414,77 +415,59 @@ class CheckoutComponent {
           minChildSize: 0.2,
           maxChildSize: 0.9,
           builder: (BuildContext context, ScrollController scrollController) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 7.5,
-                  horizontal: 20,
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 120,
-                      width: 120,
-                      decoration: BoxDecoration(
-                        color: primarySucessShade,
-                        borderRadius: BorderRadius.circular(120),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: 85,
-                          width: 85,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25),
-                                color: whiteColor,
-                              ),
-                              child: Icon(
-                                Icons.done_rounded,
-                                size: 17,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ),
+            return Stack(
+              children: [
+                LottieBuilder.asset(
+                    repeat: false,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    'assets/animations/Animation - 1749291435644.json'),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 2,
+                      horizontal: 20,
+                    ),
+                    child: Column(
+                      children: [
+                        LottieBuilder.asset(
+                            height: 150,
+                            width: 150,
+                            'assets/animations/Animation - 1749291094920.json'),
+                        SizedBox(height: 25),
+                        Text(
+                          textAlign: TextAlign.center,
+                          'Order Successful!',
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: blackColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                  ),
                         ),
-                      ),
+                        SizedBox(height: 5),
+                        Text(
+                          textAlign: TextAlign.center,
+                          'Your order will be packaged by the clerk. It will arrive at your location in 3 to 4 days',
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: subtitleColor,
+                                    fontSize: 13,
+                                  ),
+                        ),
+                        SizedBox(height: 20),
+                        CustomButton(
+                          text: 'Order Tracking',
+                          onpressed: () {
+                            Navigator.pushNamed(context, '/tracking');
+                          },
+                          color: primaryColor,
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 25),
-                    Text(
-                      textAlign: TextAlign.center,
-                      'Order Successful!',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: blackColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20,
-                          ),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      textAlign: TextAlign.center,
-                      'Your order will be packaged by the clerk. It will arrive at your location in 3 to 4 days',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: subtitleColor,
-                            fontSize: 13,
-                          ),
-                    ),
-                    SizedBox(height: 20),
-                    CustomButton(
-                      text: 'Order Tracking',
-                      onpressed: () {
-                        key.currentState!.validate();
-                      },
-                      color: primaryColor,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             );
           },
         );
