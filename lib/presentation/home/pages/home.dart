@@ -54,17 +54,6 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     color: iconGrey,
                   ),
                 ),
-                SizedBox(width: 5),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/chatbot');
-                  },
-                  icon: Icon(
-                    MingCute.chat_4_line,
-                    size: 22,
-                    color: iconGrey,
-                  ),
-                ),
                 IconButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/notification');
@@ -74,6 +63,24 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       MingCute.notification_line,
                       size: 22,
                       color: iconGrey,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 5),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/chatbot');
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/bot.png',
+                        width: 30,
+                        height: 30,
+                      ),
                     ),
                   ),
                 ),

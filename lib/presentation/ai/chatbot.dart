@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -16,7 +17,8 @@ class ChatbotScreen extends StatefulWidget {
 }
 
 class _ChatbotScreenState extends State<ChatbotScreen> {
-  String apiKey = "AIzaSyC-pSfBcBi7AVbf5nlMC8cFfP-YuEDy9HE";
+  String apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
+
   final List<String> suggestions = const [
     "How can I get more customers to notice my products?",
     "What’s the best way to promote new arrivals?",
@@ -75,6 +77,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: secondaryBg,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: CustomAppBar(
