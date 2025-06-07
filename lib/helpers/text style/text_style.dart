@@ -128,12 +128,12 @@ subheadingText(context, String text, [TextAlign? align]) {
   );
 }
 
-subheadingSmallBoldText(context, String text, double size) {
+subheadingSmallBoldText(context, String text, double size, [Color? color]) {
   return Text(
     textAlign: TextAlign.center,
     text,
     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-          color: blackColor,
+          color: color ?? blackColor,
           fontSize: size,
           fontWeight: FontWeight.w600,
         ),

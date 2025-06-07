@@ -54,12 +54,17 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     color: iconGrey,
                   ),
                 ),
-                SizedBox(width: 18),
-                Badge(
-                  child: Icon(
-                    MingCute.notification_line,
-                    size: 22,
-                    color: iconGrey,
+                SizedBox(width: 5),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/notification');
+                  },
+                  icon: Badge(
+                    child: Icon(
+                      MingCute.notification_line,
+                      size: 22,
+                      color: iconGrey,
+                    ),
                   ),
                 ),
                 SizedBox(width: 14),

@@ -1,6 +1,10 @@
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:marketa_new/presentation/favorite/pages/favorite_page.dart';
+import 'package:marketa_new/presentation/order/pages/order_page.dart';
+import 'package:marketa_new/presentation/profile/pages/profile_page.dart';
+import 'package:marketa_new/presentation/settings/pages/settings.dart';
 import '../../../helpers/color/colors.dart';
 import 'home.dart';
 
@@ -19,10 +23,10 @@ class _MainHomePageState extends State<MainHomePage> {
 
   List<Widget> pages = [
     MyHomePage(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
+    OrderPage(),
+    FavoritePage(),
+    ProfilePage(),
+    SettingsPage(),
   ];
 
   int initPage = 0;
@@ -58,12 +62,12 @@ class _MainHomePageState extends State<MainHomePage> {
               title: Text('Favorite'),
             ),
             FlashyTabBarItem(
-              icon: Icon(MingCute.store_2_line),
-              title: Text('Stores'),
-            ),
-            FlashyTabBarItem(
               icon: Icon(MingCute.user_1_fill),
               title: Text('Profile'),
+            ),
+            FlashyTabBarItem(
+              icon: Icon(MingCute.settings_1_line),
+              title: Text('Settings'),
             ),
           ],
         ),

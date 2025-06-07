@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:marketa_new/presentation/notification/pages/notifications.dart';
 import '../../presentation/authentication/pages/login_screen.dart';
 import '../../presentation/authentication/pages/otp_screen.dart';
 import '../../presentation/authentication/pages/register_screen.dart';
@@ -60,6 +60,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case '/addcard':
       return slideFromRight(AddCardPage());
+
+    case '/notification':
+      return slideFromRight(NotificationPage());
 
     default:
       return MaterialPageRoute(
