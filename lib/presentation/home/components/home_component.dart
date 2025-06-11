@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:lottie/lottie.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import '../../../helpers/color/colors.dart';
 import 'home_slide_imgs.dart';
@@ -96,7 +97,15 @@ class _HomeComponentState extends State<HomeComponent> {
                                 ),
                               ),
                             ),
-                          )
+                          ),
+                          // Positioned(
+                          //   bottom: 2,
+                          //   child: Lottie.asset(
+                          //     height: 100,
+                          //     width: 250,
+                          //     'assets/animations/Animation - 1749292768942.json',
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

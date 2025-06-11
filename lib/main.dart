@@ -4,8 +4,8 @@ import 'package:marketa_new/helpers/widgets/generate_route.dart';
 import 'helpers/color/colors.dart';
 import 'presentation/intro/pages/splash_screen.dart';
 
-void main() async {
-  await dotenv.load(fileName: ".env");
+Future<void> main() async {
+  //await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

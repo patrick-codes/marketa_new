@@ -32,7 +32,7 @@ textFormField(context, String hintText, IconData prefixIcon, TextInputType type,
       ),
       filled: true,
       isDense: true,
-      fillColor: node.hasFocus ? whiteColor : whiteColor,
+      fillColor: node.hasFocus ? whiteColor : primaryBg,
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(color: primaryColor, width: 1.5),
         borderRadius: BorderRadius.circular(12),

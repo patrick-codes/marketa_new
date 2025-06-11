@@ -17,7 +17,8 @@ class ChatbotScreen extends StatefulWidget {
 }
 
 class _ChatbotScreenState extends State<ChatbotScreen> {
-  String apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
+  String apiKey = 'AIzaSyC-pSfBcBi7AVbf5nlMC8cFfP-YuEDy9HE';
+  // String apiKey = dotenv.env['GEMINI_API_KEY'] ?? '';
 
   final List<String> suggestions = const [
     "How can I get more customers to notice my products?",
@@ -159,7 +160,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                               : Alignment.centerLeft,
                           child: Container(
                             margin: const EdgeInsets.symmetric(
-                                vertical: 4, horizontal: 8),
+                                vertical: 6, horizontal: 8),
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color:

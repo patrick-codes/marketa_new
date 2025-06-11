@@ -61,13 +61,13 @@ class _NotificationPageState extends State<NotificationPage> {
                 headingTextSemiBold(context, 'Recent'),
                 SizedBox(height: 15),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.85,
                   child: ListView.builder(
                     itemCount: icons.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
-                        height: 87,
+                        height: 100,
                         width: MediaQuery.of(context).size.width,
                         padding: EdgeInsets.all(12),
                         margin: EdgeInsets.symmetric(vertical: 10),
@@ -76,47 +76,52 @@ class _NotificationPageState extends State<NotificationPage> {
                           border: Border.all(color: outlineGrey),
                         ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
                                 Container(
-                                  height: 50,
-                                  width: 50,
+                                  height: 40,
+                                  width: 40,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(65),
                                     color: primaryContainerShade,
                                   ),
                                   child: Center(
-                                    child: Icon(icons[index]),
+                                    child: Icon(
+                                      icons[index],
+                                      size: 18,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(width: 8),
                                 SizedBox(
                                   height: 60,
-                                  width: 235,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                  width: 200,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          headingCustomSemiBold(
-                                              context,
-                                              paymentMethods[index],
-                                              FontWeight.w700),
-                                          SizedBox(height: 3),
-                                          subheadingText(
-                                              context, '******** 1234'),
-                                        ],
+                                      headingCustomSemiBold(
+                                          context,
+                                          paymentMethods[index],
+                                          FontWeight.w700),
+                                      SizedBox(height: 3),
+                                      subheadingText(
+                                        context,
+                                        '******** 1234',
                                       ),
-                                      subheadingText(context, '2 min ago'),
                                     ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 35,
+                                  child: subheadingText(
+                                    context,
+                                    '10 min ago',
+                                    TextAlign.center,
+                                    10,
                                   ),
                                 ),
                               ],
