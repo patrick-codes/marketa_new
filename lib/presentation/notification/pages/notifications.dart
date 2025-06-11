@@ -91,7 +91,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                   child: Center(
                                     child: Icon(
                                       icons[index],
-                                      size: 18,
+                                      size: 20,
                                     ),
                                   ),
                                 ),
