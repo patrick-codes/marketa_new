@@ -58,7 +58,7 @@ class _NotificationPageState extends State<NotificationPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                headingTextSemiBold(context, 'Recent'),
+                headingTextSemiBold(context, 'Recent Notifications'),
                 SizedBox(height: 15),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.85,
@@ -66,51 +66,60 @@ class _NotificationPageState extends State<NotificationPage> {
                     itemCount: icons.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 100,
+                      return SizedBox(
+                        height: 130,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(12),
-                        margin: EdgeInsets.symmetric(vertical: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: outlineGrey),
-                        ),
+                        // margin: EdgeInsets.symmetric(vertical: 2),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               children: [
-                                Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(65),
-                                    color: primaryContainerShade,
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      icons[index],
-                                      size: 20,
-                                    ),
+                                SizedBox(
+                                  height: 100,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 40,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(65),
+                                          color: primaryContainerShade,
+                                        ),
+                                        child: Center(
+                                          child: Icon(
+                                            icons[index],
+                                            size: 20,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 SizedBox(width: 8),
                                 SizedBox(
-                                  height: 60,
+                                  height: 100,
                                   width: 200,
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       headingCustomSemiBold(
                                           context,
                                           paymentMethods[index],
-                                          FontWeight.w700),
+                                          FontWeight.w600),
                                       SizedBox(height: 3),
                                       subheadingText(
                                         context,
-                                        '******** 1234',
+                                        'You have successfully purchased 334 headphones, thank you and wait for your package to arrive.',
+                                        TextAlign.start,
+                                        13.5,
+                                        3,
                                       ),
                                     ],
                                   ),
@@ -126,6 +135,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 ),
                               ],
                             ),
+                            Divider(color: outlineGrey),
                           ],
                         ),
                       );
