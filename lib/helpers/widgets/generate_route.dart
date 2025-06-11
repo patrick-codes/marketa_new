@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:marketa_new/presentation/notification/pages/notifications.dart';
+import 'package:marketa_new/presentation/settings/pages/general/language_settings.dart';
 import '../../presentation/ai/chatbot.dart';
 import '../../presentation/authentication/pages/login_screen.dart';
 import '../../presentation/authentication/pages/otp_screen.dart';
+import '../../presentation/authentication/pages/password_reset_screen.dart';
 import '../../presentation/authentication/pages/register_screen.dart';
 import '../../presentation/cart/pages/cart_page.dart';
 import '../../presentation/checkout/pages/add_card.dart';
@@ -14,6 +16,11 @@ import '../../presentation/intro/pages/splash_screen.dart';
 import '../../presentation/intro/pages/welcome_screen.dart';
 import '../../presentation/search/main_search_page.dart';
 import '../../presentation/search/search_page.dart';
+import '../../presentation/settings/pages/general/notification_settings.dart';
+import '../../presentation/settings/pages/general/security_settings.dart';
+import '../../presentation/settings/pages/general/themes_settings.dart';
+import '../../presentation/settings/pages/preferences/help_support.dart';
+import '../../presentation/settings/pages/preferences/legal_policies.dart';
 import '../../presentation/store/pages/shop_details_page.dart';
 import '../../presentation/store/pages/shop_home.dart';
 import '../../presentation/tracking/pages/order_tracking_page.dart';
@@ -71,6 +78,27 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case '/chatbot':
       return slideFromRight(ChatbotScreen());
+
+    case '/themes':
+      return slideFromRight(ThemesPage());
+
+    case '/passwordsettings':
+      return slideFromRight(PassSettingsPage());
+
+    case '/notificationsettings':
+      return slideFromRight(NotifSettingsPage());
+
+    case '/security':
+      return slideFromRight(SecurityPage());
+
+    case '/languages':
+      return slideFromRight(LanguageSettings());
+
+    case '/legal':
+      return slideFromRight(LegalPolicyPage());
+
+    case '/support':
+      return slideFromRight(SupportPage());
 
     default:
       return MaterialPageRoute(

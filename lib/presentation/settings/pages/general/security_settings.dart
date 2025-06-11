@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PassSettingsPage extends StatelessWidget {
-  const PassSettingsPage({super.key});
+class SecurityPage extends StatelessWidget {
+  const SecurityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
