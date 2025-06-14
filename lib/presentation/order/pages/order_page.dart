@@ -5,8 +5,6 @@ import 'package:marketa_new/presentation/order/components/myorder_component.dart
 import 'package:marketa_new/presentation/order/components/order_history_component.dart';
 import '../../../helpers/color/colors.dart';
 import '../../../helpers/text style/text_style.dart';
-import '../../category/pages/category.dart';
-import '../../home/components/home_component.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});

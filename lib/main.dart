@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:marketa_new/helpers/widgets/generate_route.dart';
 import 'helpers/color/colors.dart';
 import 'presentation/intro/pages/splash_screen.dart';

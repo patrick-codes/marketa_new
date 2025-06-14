@@ -7,7 +7,7 @@ import '../../../helpers/widgets/custom_appbar.dart';
 import '../components/cart_components.dart';
 
 class CartPage extends StatefulWidget {
-  CartPage({super.key});
+  const CartPage({super.key});
 
   @override
   State<CartPage> createState() => _CartPageState();

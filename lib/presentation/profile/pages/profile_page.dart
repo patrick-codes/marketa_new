@@ -5,8 +5,6 @@ import '../../../helpers/text style/text_style.dart';
 import '../../../helpers/widgets/custom_appbar.dart';
 import '../../../helpers/widgets/custom_button.dart';
 import '../../../helpers/widgets/custom_textform_field.dart';
-import '../../../helpers/widgets/outlined_custom_ button.dart';
-import '../../authentication/components/password_reset_component.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

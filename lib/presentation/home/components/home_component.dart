@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:lottie/lottie.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import '../../../helpers/color/colors.dart';
 import 'home_slide_imgs.dart';

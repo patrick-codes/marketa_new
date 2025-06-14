@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 import '../../../../helpers/color/colors.dart';
-import '../../../../helpers/text style/text_style.dart';
 import '../../../../helpers/widgets/custom_appbar.dart';
 
 class LanguageSettings extends StatefulWidget {

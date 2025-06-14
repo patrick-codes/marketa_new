@@ -4,7 +4,6 @@ import 'package:marketa_new/helpers/widgets/order_progress.dart';
 import '../../../helpers/color/colors.dart';
 import '../../../helpers/text style/text_style.dart';
 import '../../../helpers/widgets/custom_button.dart';
-import '../../checkout/components/checkout_component.dart';
 
 class OrderTrackingPage extends StatelessWidget {
   const OrderTrackingPage({super.key});

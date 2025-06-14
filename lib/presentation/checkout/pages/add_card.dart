@@ -6,7 +6,6 @@ import '../../../helpers/text style/text_style.dart';
 import '../../../helpers/widgets/custom_appbar.dart';
 import '../../../helpers/widgets/custom_button.dart';
 import '../../../helpers/widgets/custom_textform_field.dart';
-import '../../../helpers/widgets/outlined_custom_ button.dart';
 
 class AddCardPage extends StatefulWidget {
   const AddCardPage({super.key});
