@@ -24,7 +24,7 @@ class ShopDetailsPage extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50),
             child: CustomAppBar(
-              title: 'Detail Product',
+              title: 'Product Details',
               actions: [
                 Icon(MingCute.shopping_bag_3_line),
                 SizedBox(width: 12),
@@ -146,6 +146,32 @@ class ShopDetailsPage extends StatelessWidget {
                                 subheadingSmallBoldText(context, '4.8', 13),
                                 SizedBox(width: 5),
                                 subheadingText(context, ' (320 Review)'),
+                                SizedBox(width: 10),
+                                Container(
+                                  height: 18,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: outlineGrey,
+                                    ),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: Center(
+                                    child: subheadingText(
+                                      context,
+                                      'ACTIVE',
+                                      TextAlign.center,
+                                      10,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 5),
+                                subheadingText(
+                                  context,
+                                  'SLIGHTLY USED',
+                                  TextAlign.center,
+                                  9,
+                                ),
                               ],
                             ),
                             trailing: Container(
@@ -185,7 +211,7 @@ class ShopDetailsPage extends StatelessWidget {
                           title: Row(
                             children: [
                               Text(
-                                'Upbox Bag',
+                                'Peter Boateng',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
@@ -205,19 +231,7 @@ class ShopDetailsPage extends StatelessWidget {
                           subtitle: Row(
                             children: [
                               Text(
-                                '104 Products',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: subtitleColor,
-                                    ),
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                '1.2k Followers',
+                                '104 Products Listed',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
@@ -230,7 +244,7 @@ class ShopDetailsPage extends StatelessWidget {
                             ],
                           ),
                           trailing: Container(
-                            height: 35,
+                            height: 33,
                             width: 85,
                             decoration: BoxDecoration(
                               border: Border.all(color: outlineGrey),
@@ -238,12 +252,12 @@ class ShopDetailsPage extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                'Follow',
+                                'View shop',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
                                     .copyWith(
-                                      fontSize: 12,
+                                      fontSize: 10.5,
                                       color: primaryColor,
                                       fontWeight: FontWeight.w500,
                                     ),
