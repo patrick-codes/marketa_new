@@ -130,6 +130,22 @@ subheadingText(context, String text,
   );
 }
 
+descriptionText(context, String text,
+    [TextAlign? align, double? size, int? maxlines]) {
+  return Text(
+    textAlign: align ?? TextAlign.start,
+    softWrap: true,
+    overflow: TextOverflow.ellipsis,
+    maxLines: maxlines ?? 10,
+    text,
+    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+          color: iconGrey,
+          fontSize: size ?? 13,
+          height: 1.5,
+        ),
+  );
+}
+
 subheadingSmallBoldText(context, String text, double size, [Color? color]) {
   return Text(
     textAlign: TextAlign.center,

@@ -50,20 +50,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   },
                   icon: Icon(
                     MingCute.search_line,
-                    size: 22,
+                    size: 25,
                     color: iconGrey,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/notification');
-                  },
-                  icon: Badge(
-                    child: Icon(
-                      MingCute.notification_line,
-                      size: 22,
-                      color: iconGrey,
-                    ),
                   ),
                 ),
                 SizedBox(width: 5),
@@ -78,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                     child: Center(
                       child: Image.asset(
                         'assets/images/bot.png',
-                        width: 30,
+                        width: 40,
                         height: 30,
                       ),
                     ),
@@ -91,13 +79,19 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   CircleAvatar(
                     backgroundImage: AssetImage(onboardingImg3),
                   ),
-                  SizedBox(width: 5),
+                  SizedBox(width: 7),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      appbarText(context, 'Hi, Jonathan'),
-                      appbarSubText(context, 'Lets go shopping', 11),
+                      Text(
+                        'Marketa Ecommerce',
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: blackColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      appbarSubText(context, 'Shop home from home!', 10),
                     ],
                   )
                 ],

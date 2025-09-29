@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
+import 'package:marketa_new/helpers/widgets/cedi_widget.dart';
 import 'package:marketa_new/helpers/widgets/custom_bottomnav_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../helpers/images/image_helpers.dart';
@@ -42,11 +43,13 @@ class ShopDetailsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    appbarSubText(context, 'Price', 15),
-                    headingTextMedium(context, 'GHC 45.25'),
+                    CediSign(
+                      weight: FontWeight.bold,
+                      size: 21,
+                    ),
+                    headingTextMedium(context, ' 100.25'),
                   ],
                 ),
                 CustomNavButton(
@@ -125,10 +128,10 @@ class ShopDetailsPage extends StatelessWidget {
                           child: ListTile(
                             minLeadingWidth: 2,
                             horizontalTitleGap: 8,
-                            minTileHeight: 5,
+                            minTileHeight: 8,
                             minVerticalPadding: 5,
                             dense: true,
-                            contentPadding: EdgeInsets.symmetric(horizontal: 5),
+                            contentPadding: EdgeInsets.symmetric(vertical: 5),
                             title: Row(
                               children: [
                                 headingTextMedium(
@@ -189,15 +192,12 @@ class ShopDetailsPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20),
-                        appbarSubText(
-                          context,
-                          'Elevate your daily style with our Classic Everyday Tote Bag — the perfect blend of fashion, function, and durability. Crafted from premium canvas.',
-                          13,
-                        ),
+                        descriptionText(context,
+                            'Elevate your daily style with our Classic Everyday Tote Bag — the perfect blend of fashion, function, and durability. Crafted from premium canvas.'),
                         SizedBox(height: 22),
                         ListTile(
                           onTap: () {
-                            // Navigator.pushNamed(context, '/mainshop');
+                            Navigator.pushNamed(context, '/mainshop');
                           },
                           minLeadingWidth: 2,
                           horizontalTitleGap: 5,
@@ -268,44 +268,6 @@ class ShopDetailsPage extends StatelessWidget {
                         SizedBox(height: 5),
                         Divider(color: outlineGrey),
                         SizedBox(height: 22),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            headingTextSemiBold(context, 'Quantity:'),
-                            Container(
-                              height: 40,
-                              width: 90,
-                              decoration: BoxDecoration(
-                                color: secondaryColor3,
-                                borderRadius: BorderRadius.circular(35),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      ' -',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(width: 14),
-                                    Text(
-                                      '1',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    SizedBox(width: 14),
-                                    Icon(Icons.add),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
