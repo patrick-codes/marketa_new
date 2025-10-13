@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/helpers/widgets/cedi_widget.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../helpers/animation/showup_animation.dart';
 import '../../../helpers/color/colors.dart';
 
@@ -12,6 +14,8 @@ class HomeComponent extends StatefulWidget {
 }
 
 class _HomeComponentState extends State<HomeComponent> {
+  static final _controller = PageController();
+
   List<String> title = <String>[
     "Meriza Kiles Leather Bag",
     "The Mirac Jiz",
@@ -28,16 +32,37 @@ class _HomeComponentState extends State<HomeComponent> {
     "assets/images/img3.jpg",
     "assets/images/img.jpg",
   ];
-
   List<String> bannerImgs = <String>[
     "assets/images/banner3.png",
     "assets/images/banner2.png",
     "assets/images/img9.jpg",
   ];
+
+  Widget buildStarRating(double rating, {double size = 12}) {
+    // Round rating to nearest half (e.g. 3.5)
+    int fullStars = rating.floor();
+    bool hasHalfStar = (rating - fullStars) >= 0.5;
+    int emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Full stars
+        for (int i = 0; i < fullStars; i++)
+          Icon(MingCute.star_fill, color: Colors.amber, size: size),
+        // Half star (optional)
+        if (hasHalfStar)
+          Icon(MingCute.star_half_fill, color: Colors.amber, size: size),
+        // Empty stars
+        for (int i = 0; i < emptyStars; i++)
+          Icon(MingCute.star_line, color: Colors.amber, size: size),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      // padding: const EdgeInsets.symmetric(),
       color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
@@ -46,7 +71,7 @@ class _HomeComponentState extends State<HomeComponent> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 150,
+              height: 170,
               width: MediaQuery.of(context).size.width,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -59,6 +84,7 @@ class _HomeComponentState extends State<HomeComponent> {
                       height: 150,
                       width: MediaQuery.of(context).size.width,
                       child: PageView.builder(
+                        controller: _controller,
                         itemCount: bannerImgs.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
@@ -67,6 +93,20 @@ class _HomeComponentState extends State<HomeComponent> {
                             child: banner(bannerImgs[index]),
                           );
                         },
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Center(
+                      child: SmoothPageIndicator(
+                        controller: _controller,
+                        count: bannerImgs.length,
+                        effect: ScrollingDotsEffect(
+                          paintStyle: PaintingStyle.fill,
+                          activeDotColor: primaryColor,
+                          dotHeight: 5,
+                          dotWidth: 5,
+                          spacing: 5,
+                        ),
                       ),
                     ),
                   ],
@@ -196,6 +236,21 @@ class _HomeComponentState extends State<HomeComponent> {
                                   ),
                                   SizedBox(height: 3),
                                   Row(
+                                    children: [
+                                      const Text(
+                                        'Rating: ',
+                                        style: TextStyle(fontSize: 10),
+                                      ),
+                                      buildStarRating(2.5),
+                                      const SizedBox(width: 5),
+                                      const Text(
+                                        '(120)',
+                                        style: TextStyle(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 3),
+                                  Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
@@ -206,7 +261,7 @@ class _HomeComponentState extends State<HomeComponent> {
                                             weight: FontWeight.bold,
                                           ),
                                           Text(
-                                            '2.99',
+                                            '100.99',
                                             style: TextStyle(
                                                 fontSize: 17,
                                                 color: blackColor,
@@ -216,16 +271,19 @@ class _HomeComponentState extends State<HomeComponent> {
                                       ),
                                       Row(
                                         children: [
-                                          const Icon(
-                                            Icons.location_on,
-                                            color: iconGrey,
-                                            size: 10,
+                                          CediSign(
+                                            size: 14,
+                                            color: Colors.grey,
+                                            weight: FontWeight.bold,
                                           ),
                                           Text(
-                                            'Accra',
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              color: iconGrey,
+                                            '200.99',
+                                            style: const TextStyle(
+                                              color: Colors.grey,
+                                              fontSize: 14,
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                              decorationThickness: 1.5,
                                             ),
                                           ),
                                         ],

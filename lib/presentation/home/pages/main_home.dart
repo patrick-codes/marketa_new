@@ -1,5 +1,6 @@
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/presentation/favorite/pages/favorite_page.dart';
 import 'package:marketa_new/presentation/order/pages/order_page.dart';
@@ -40,34 +41,45 @@ class _MainHomePageState extends State<MainHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: secondaryColor2,
-        bottomNavigationBar: FlashyTabBar(
+        bottomNavigationBar: GNav(
           selectedIndex: _selectedIndex,
-          showElevation: true,
-          onItemSelected: (index) => setState(() {
-            _selectedIndex = index;
-          }),
-          items: [
-            FlashyTabBarItem(
-              icon: Icon(
-                MingCute.home_1_line,
-              ),
-              title: Text('Home'),
+          onTabChange: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          backgroundColor: secondaryColor,
+          activeColor: primaryColor,
+          iconSize: 25,
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          duration: const Duration(milliseconds: 300),
+          color: Colors.black45,
+          curve: Curves.bounceIn,
+          style: GnavStyle.oldSchool,
+          tabBorderRadius: 100.0,
+          tabMargin: EdgeInsets.all(5),
+          textSize: 8,
+          gap: 0,
+          tabs: const [
+            GButton(
+              icon: MingCute.home_6_line,
+              text: 'Home',
             ),
-            FlashyTabBarItem(
-              icon: Icon(MingCute.bike_line),
-              title: Text('Orders'),
+            GButton(
+              icon: MingCute.list_ordered_line,
+              text: 'Orders',
             ),
-            FlashyTabBarItem(
-              icon: Icon(MingCute.heart_line),
-              title: Text('Favorite'),
+            GButton(
+              icon: MingCute.heart_line,
+              text: 'Favorite',
             ),
-            FlashyTabBarItem(
-              icon: Icon(MingCute.user_1_fill),
-              title: Text('Profile'),
+            GButton(
+              icon: MingCute.user_1_line,
+              text: 'Profile',
             ),
-            FlashyTabBarItem(
-              icon: Icon(MingCute.settings_1_line),
-              title: Text('Settings'),
+            GButton(
+              icon: MingCute.settings_1_line,
+              text: 'Settings',
             ),
           ],
         ),

@@ -51,6 +51,7 @@ class _MainShopHomeState extends State<MainShopHome>
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: CustomAppBar(
+          bgColor: whiteColor,
           title: 'Store',
           actions: [
             Icon(MingCute.shopping_bag_3_line),

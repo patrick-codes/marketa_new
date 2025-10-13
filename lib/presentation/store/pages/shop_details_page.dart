@@ -25,6 +25,7 @@ class ShopDetailsPage extends StatelessWidget {
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50),
             child: CustomAppBar(
+              bgColor: whiteColor,
               title: 'Product Details',
               actions: [
                 Icon(MingCute.shopping_bag_3_line),
@@ -151,7 +152,7 @@ class ShopDetailsPage extends StatelessWidget {
                                 subheadingText(context, ' (320 Review)'),
                                 SizedBox(width: 10),
                                 Container(
-                                  height: 18,
+                                  height: 17,
                                   width: 50,
                                   decoration: BoxDecoration(
                                     border: Border.all(
@@ -164,7 +165,7 @@ class ShopDetailsPage extends StatelessWidget {
                                       context,
                                       'ACTIVE',
                                       TextAlign.center,
-                                      10,
+                                      8,
                                     ),
                                   ),
                                 ),
@@ -193,7 +194,7 @@ class ShopDetailsPage extends StatelessWidget {
                         ),
                         SizedBox(height: 20),
                         descriptionText(context,
-                            'Elevate your daily style with our Classic Everyday Tote Bag — the perfect blend of fashion, function, and durability. Crafted from premium canvas.'),
+                            'Elevate your daily style with our Classic Everyday Tote Bag — the perfect blend of fashion, function, and durability. Crafted from premium canvas.Elevate your daily style with our Classic Everyday Tote Bag — the perfect blend of fashion, function, and durability. Crafted from premium canvas.'),
                         SizedBox(height: 22),
                         ListTile(
                           onTap: () {
@@ -220,18 +221,12 @@ class ShopDetailsPage extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
-                              SizedBox(width: 5),
-                              Icon(
-                                Icons.verified,
-                                color: primaryColor,
-                                size: 13,
-                              ),
                             ],
                           ),
                           subtitle: Row(
                             children: [
                               Text(
-                                '104 Products Listed',
+                                'Verified Seller',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
@@ -240,6 +235,12 @@ class ShopDetailsPage extends StatelessWidget {
                                       fontWeight: FontWeight.w400,
                                       color: subtitleColor,
                                     ),
+                              ),
+                              SizedBox(width: 5),
+                              Icon(
+                                Icons.verified,
+                                color: Colors.green,
+                                size: 13,
                               ),
                             ],
                           ),

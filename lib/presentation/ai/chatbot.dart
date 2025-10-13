@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:lottie/lottie.dart'; // ✅ for animated send button
+import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text style/text_style.dart';
-import 'package:marketa_new/helpers/widgets/custom_appbar.dart';
 
 class ChatbotScreen extends StatefulWidget {
   const ChatbotScreen({super.key});
@@ -102,7 +101,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           message,
           style: TextStyle(
             color: isUser ? Colors.white : Colors.black,
-            fontSize: 15,
+            fontSize: 13,
           ),
         ),
       ),
@@ -124,8 +123,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           iconTheme: const IconThemeData(color: Colors.black),
         ),
       ),
-
-      // Floating bottom bar with Lottie send button
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(
@@ -134,7 +131,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             bottom: MediaQuery.of(context).viewInsets.bottom + 8,
           ),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
             decoration: BoxDecoration(
               color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(30),
@@ -156,10 +153,16 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                       focusNode: node,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
-                      style: const TextStyle(color: Colors.black),
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                      ),
                       decoration: const InputDecoration(
-                        hintText: "Type your message...",
-                        hintStyle: TextStyle(color: Colors.black54),
+                        hintText: "Ask marketa...",
+                        hintStyle: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 15,
+                        ),
                         border: InputBorder.none,
                       ),
                     ),
@@ -167,7 +170,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                 ),
                 IconButton(
                   icon: const Icon(MingCute.send_fill,
-                      size: 28, color: Colors.blue),
+                      size: 28, color: blackColor),
                   onPressed: isLoading
                       ? null
                       : () {
@@ -183,7 +186,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
           ),
         ),
       ),
-
       body: Column(
         children: [
           Expanded(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:marketa_new/helpers/widgets/cedi_widget.dart';
 import '../../../helpers/color/colors.dart';
 import '../../../helpers/widgets/custom_appbar.dart';
 import '../../search/components/filter_screen.dart';
@@ -59,6 +60,27 @@ class _FavoritePageState extends State<FavoritePage> {
     "assets/images/img3.jpg",
     "assets/images/img.jpg",
   ];
+  Widget buildStarRating(double rating, {double size = 12}) {
+    // Round rating to nearest half (e.g. 3.5)
+    int fullStars = rating.floor();
+    bool hasHalfStar = (rating - fullStars) >= 0.5;
+    int emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Full stars
+        for (int i = 0; i < fullStars; i++)
+          Icon(MingCute.star_fill, color: Colors.amber, size: size),
+        // Half star (optional)
+        if (hasHalfStar)
+          Icon(MingCute.star_half_fill, color: Colors.amber, size: size),
+        // Empty stars
+        for (int i = 0; i < emptyStars; i++)
+          Icon(MingCute.star_line, color: Colors.amber, size: size),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,106 +211,183 @@ class _FavoritePageState extends State<FavoritePage> {
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 5,
                     childAspectRatio: 1.6,
-                    mainAxisExtent: 190,
+                    mainAxisExtent: 240,
                   ),
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 6,
+                  itemCount: title.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 120,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset(imgs[index]).image,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                top: 5,
-                                right: 5,
-                                child: Container(
-                                  height: 22,
-                                  width: 22,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.grey.shade500,
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      MingCute.heart_fill,
-                                      color: Colors.red,
-                                      size: 12,
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/shopdetails',
+                          arguments: {"id": imgs[index]},
+                        );
+                      },
+                      child: Container(
+                        width: 140,
+                        height: 250,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        const SizedBox(height: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        child: Stack(
                           children: [
-                            Text(
-                              textAlign: TextAlign.center,
-                              title2[index],
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(
-                                    color: blackColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13,
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 130,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: Image.asset(
+                                        imgs[index],
+                                      ).image,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    color: outlineGrey,
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                            ),
-                            SizedBox(height: 3),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Lisa Robber',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 10,
-                                        color: Colors.black45,
-                                      ),
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Container(
+                                              height: 18,
+                                              width: 55,
+                                              decoration: BoxDecoration(
+                                                color: const Color.fromARGB(
+                                                    156, 238, 238, 238),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 2,
+                                                    spreadRadius: 1,
+                                                    color: Colors.grey
+                                                        .withOpacity(0.5),
+                                                  ),
+                                                ],
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  softWrap: true,
+                                                  '100 stock',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 8,
+                                                    color: blackColor,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
-                            SizedBox(height: 3),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'GHC 195.00',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 12,
-                                        color: blackColor,
+                                const SizedBox(height: 5),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        overflow: TextOverflow.ellipsis,
+                                        softWrap: true,
+                                        title[index],
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: blackColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
+                                      Text(
+                                        overflow: TextOverflow.ellipsis,
+                                        softWrap: true,
+                                        'Soft Gray | 32 lbs each',
+                                        style: const TextStyle(
+                                          fontSize: 10,
+                                          color: Colors.black45,
+                                        ),
+                                      ),
+                                      SizedBox(height: 3),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Rating: ',
+                                            style: TextStyle(fontSize: 10),
+                                          ),
+                                          buildStarRating(2.5),
+                                          const SizedBox(width: 5),
+                                          const Text(
+                                            '(120)',
+                                            style: TextStyle(fontSize: 12),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(height: 3),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              CediSign(
+                                                size: 17,
+                                                weight: FontWeight.bold,
+                                              ),
+                                              Text(
+                                                '100.99',
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    color: blackColor,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              CediSign(
+                                                size: 14,
+                                                color: Colors.grey,
+                                                weight: FontWeight.bold,
+                                              ),
+                                              Text(
+                                                '200.99',
+                                                style: const TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 14,
+                                                  decoration: TextDecoration
+                                                      .lineThrough,
+                                                  decorationThickness: 1.5,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     );
                   },
                 ),
