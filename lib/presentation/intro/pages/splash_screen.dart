@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(Duration(seconds: 6));
     if (mounted) {
       Navigator.pushNamedAndRemoveUntil(
-          context, '/onboarding', (route) => false);
+          context, '/mainhome', (route) => false);
     }
   }
 

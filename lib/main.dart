@@ -1,41 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:marketa_new/helpers/widgets/generate_route.dart';
-import 'helpers/color/colors.dart';
-import 'presentation/intro/pages/splash_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marketa_new/marketa_blocs.dart';
+import 'package:marketa_new/marketa_observer.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   //await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
-}
+  WidgetsFlutterBinding.ensureInitialized();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  await Hive.initFlutter(); // Initialize Hive
+  await Hive.openBox('appBox'); // Open a box (like a storage container)
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Marketa',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-      },
-      onGenerateRoute: generateRoute,
-      // onGenerateRoute: (settings) {
-      //   if (settings.name == '/mainshopinfo') {
-      //     final args = settings.arguments as Map<String, dynamic>;
-      //     return MaterialPageRoute(
-      //       builder: (context) => MainShopinfoPage(id: args['id']),
-      //     );
-      //   }
-      //   return null;
-      // },
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        scaffoldBackgroundColor: secondaryBg,
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-    );
-  }
+  Bloc.observer = const MarketaObserver();
+  runApp(const MarketaBlocs());
 }

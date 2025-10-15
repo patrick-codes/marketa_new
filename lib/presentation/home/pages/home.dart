@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                       Text(
                         'Marketa Ecommerce',
                         style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 13.5,
                             color: blackColor,
                             fontWeight: FontWeight.bold),
                       ),

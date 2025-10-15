@@ -30,12 +30,13 @@ headingText(context, String text) {
   );
 }
 
-headingTextMedium(context, String text, [FontWeight? weight, double? size]) {
+headingTextMedium(context, String text,
+    [FontWeight? weight, double? size, Color? color]) {
   return Text(
     textAlign: TextAlign.center,
     text,
     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-          color: blackColor,
+          color: color ?? blackColor,
           fontWeight: weight ?? FontWeight.bold,
           fontSize: size ?? 19,
         ),

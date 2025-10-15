@@ -70,8 +70,106 @@ class _CheckOutPageState extends State<CheckOutPage> {
             CustomButton(
               text: 'Checkout Now',
               onpressed: () {
-                CheckoutComponent.orderSuccesScrollBottomSheet(context, key);
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(8.0),
+                          bottom: Radius.circular(8),
+                        ),
+                      ),
+                      title: Center(
+                        child: headingTextMedium(
+                          context,
+                          'Action Needed!',
+                          FontWeight.bold,
+                          16,
+                          Colors.red,
+                        ),
+                      ),
+                      content: SizedBox(
+                        height: 150,
+                        child: Column(
+                          children: [
+                            headingTextMedium(
+                              context,
+                              'Login or register an account to continue checking out',
+                              FontWeight.w500,
+                              12,
+                            ),
+                            SizedBox(height: 13.5),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/login');
+                              },
+                              child: Container(
+                                height: 45,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  border: Border.all(
+                                    color: primaryColor,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: headingTextMedium(
+                                    context,
+                                    'Login',
+                                    FontWeight.w600,
+                                    12,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/signup');
+                              },
+                              child: Container(
+                                height: 45,
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(25),
+                                  border: Border.all(
+                                    color: primaryColor,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: headingTextMedium(
+                                    context,
+                                    'Signup',
+                                    FontWeight.w600,
+                                    12,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      actions: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: headingTextMedium(
+                            context,
+                            'Cancel',
+                            FontWeight.w600,
+                            12,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                );
               },
+              // CheckoutComponent.orderSuccesScrollBottomSheet(context, key);
+
               color: primaryColor,
             ),
           ],

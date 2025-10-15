@@ -7,6 +7,7 @@ import '../../presentation/authentication/pages/otp_screen.dart';
 import '../../presentation/authentication/pages/password_reset_screen.dart';
 import '../../presentation/authentication/pages/register_screen.dart';
 import '../../presentation/cart/pages/cart_page.dart';
+import '../../presentation/cart/pages/cart_page_new.dart';
 import '../../presentation/checkout/pages/add_card.dart';
 import '../../presentation/checkout/pages/checkout.dart';
 import '../../presentation/home/pages/home.dart';
@@ -60,6 +61,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
 
     case '/shopdetails':
       return slideFromRight(ShopDetailsPage());
+
+    case '/cartnew':
+      return slideFromRight(CartPageNew());
 
     case '/cart':
       return slideFromRight(CartPage());
