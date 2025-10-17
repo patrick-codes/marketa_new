@@ -117,7 +117,7 @@ appbarSubText(context, String text, double size) {
 }
 
 subheadingText(context, String text,
-    [TextAlign? align, double? size, int? maxlines]) {
+    [TextAlign? align, double? size, int? maxlines, Color? color]) {
   return Text(
     textAlign: align ?? TextAlign.center,
     softWrap: true,
@@ -125,7 +125,7 @@ subheadingText(context, String text,
     maxLines: maxlines ?? 2,
     text,
     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-          color: subtitleColor,
+          color: color ?? subtitleColor,
           fontSize: size ?? 13,
         ),
   );

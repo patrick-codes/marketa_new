@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketa_new/marketa_app.dart';
 import 'presentation/authentication/bloc/auth_bloc.dart';
 import 'presentation/authentication/bloc/auth_events.dart';
+import 'presentation/products/bloc/products_bloc.dart';
 
 class MarketaBlocs extends StatelessWidget {
   const MarketaBlocs({super.key});
@@ -13,6 +14,9 @@ class MarketaBlocs extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthBloc()..add(AppStartedEvent()),
+        ),
+        BlocProvider(
+          create: (context) => ProductsBloc()..add(LoadProductsEvent()),
         ),
         // BlocProvider(
         //   create: (context) => ProductBloc()..add(FetchProducts()),

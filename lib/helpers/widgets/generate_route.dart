@@ -22,7 +22,7 @@ import '../../presentation/settings/pages/general/security_settings.dart';
 import '../../presentation/settings/pages/general/themes_settings.dart';
 import '../../presentation/settings/pages/preferences/help_support.dart';
 import '../../presentation/settings/pages/preferences/legal_policies.dart';
-import '../../presentation/store/pages/shop_details_page.dart';
+import '../../presentation/products/pages/shop_details_page.dart';
 import '../../presentation/store/pages/shop_home.dart';
 import '../../presentation/tracking/pages/order_tracking_page.dart';
 import 'route_transition.dart';
@@ -60,7 +60,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return slideFromRight(const MainShopHome());
 
     case '/shopdetails':
-      return slideFromRight(ShopDetailsPage());
+      final args = settings.arguments as Map<String, dynamic>;
+      return slideFromRight(ShopDetailsPage(
+        id: args['id'],
+      ));
 
     case '/cartnew':
       return slideFromRight(CartPageNew());

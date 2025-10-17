@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
-import 'package:marketa_new/helpers/widgets/custom_button.dart';
 import 'package:marketa_new/helpers/widgets/custom_textform_field.dart';
+import 'package:marketa_new/presentation/authentication/bloc/auth_bloc.dart';
+import 'package:marketa_new/presentation/authentication/bloc/auth_states.dart';
 import '../../../helpers/widgets/outlined_custom_ button.dart';
+import '../bloc/auth_events.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -14,9 +17,15 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   final FocusNode _focusNode1 = FocusNode();
   final FocusNode _focusNode2 = FocusNode();
   final FocusNode _focusNode3 = FocusNode();
+  final FocusNode _focusNode4 = FocusNode();
 
   bool isRememberme = false;
   bool isSignupScreen = true;
@@ -33,6 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _focusNode1.addListener(_onFocusChange);
     _focusNode2.addListener(_onFocusChange);
     _focusNode3.addListener(_onFocusChange);
+    _focusNode4.addListener(_onFocusChange);
   }
 
   void _onFocusChange() {
@@ -44,80 +54,170 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _focusNode1.dispose();
     _focusNode2.dispose();
     _focusNode3.dispose();
+    _focusNode4.dispose();
+    _nameController.dispose();
+    _phoneController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: secondaryBg,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 30),
-                headingText(context, 'Create Account'),
-                SizedBox(height: 3),
-                subheadingText(
-                    context, 'start shopping by creating an account'),
-                SizedBox(height: 30),
-                Form(
-                  key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      labelTextSmall(context, 'Username'),
-                      SizedBox(height: 7),
-                      textFormField(
-                        context,
-                        'Create Username',
-                        MingCute.user_3_line,
-                        TextInputType.text,
-                        _focusNode1,
-                      ),
-                      SizedBox(height: 20),
-                      labelTextSmall(context, 'Email'),
-                      SizedBox(height: 7),
-                      emailtextFormField(context, _focusNode2),
-                      SizedBox(height: 20),
-                      labelTextSmall(context, 'Password'),
-                      SizedBox(height: 7),
-                      passwordTextFormField(context, _focusNode3)
-                    ],
-                  ),
-                ),
-                SizedBox(height: 40),
-                CustomButton(
-                  text: 'Create Account',
-                  onpressed: () {
-                    Navigator.pushNamed(context, '/mainhome');
-                  },
-                  color: primaryColor,
-                ),
-                SizedBox(height: 22),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthAuthenticated) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Welcome back ${state.username}!")),
+          );
+          Navigator.pop(context);
+        }
+        if (state is AuthError) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  duration: Duration(seconds: 3),
+                  content: Text("${state.message}!")),
+            );
+          });
+        }
+      },
+      builder: (BuildContext context, state) {
+        return Scaffold(
+          backgroundColor: secondaryBg,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    labelTextFaint(context, 'Or using other method'),
+                    SizedBox(height: 30),
+                    headingText(context, 'Create Account'),
+                    SizedBox(height: 3),
+                    subheadingText(
+                        context, 'start shopping by creating an account'),
+                    SizedBox(height: 30),
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          labelTextSmall(context, 'Username'),
+                          SizedBox(height: 7),
+                          textFormField(
+                            context,
+                            'Create Username',
+                            MingCute.user_3_line,
+                            TextInputType.text,
+                            _focusNode1,
+                            _nameController,
+                          ),
+                          SizedBox(height: 20),
+                          labelTextSmall(context, 'Phone'),
+                          SizedBox(height: 7),
+                          textFormField(
+                            context,
+                            'Enter Phone',
+                            MingCute.phone_line,
+                            TextInputType.phone,
+                            _focusNode2,
+                            _phoneController,
+                          ),
+                          SizedBox(height: 20),
+                          labelTextSmall(context, 'Email'),
+                          SizedBox(height: 7),
+                          emailtextFormField(
+                            context,
+                            _focusNode3,
+                            _emailController,
+                          ),
+                          SizedBox(height: 20),
+                          labelTextSmall(context, 'Password'),
+                          SizedBox(height: 7),
+                          passwordTextFormField(
+                            context,
+                            _focusNode4,
+                            _passwordController,
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    GestureDetector(
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          context.read<AuthBloc>().add(
+                                RegisterUserEvent(
+                                  _nameController.text,
+                                  _phoneController.text,
+                                  _emailController.text,
+                                  _passwordController.text,
+                                ),
+                              );
+                        }
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.transparent),
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              state is AuthLoading
+                                  ? SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: whiteColor,
+                                      ),
+                                    )
+                                  : Text(
+                                      'Create Account',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            color: whiteColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16,
+                                          ),
+                                    ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 22),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        labelTextFaint(context, 'Or using other method'),
+                      ],
+                    ),
+                    SizedBox(height: 22),
+                    WhiteCustomButton(
+                      text: 'Sign Up with Google',
+                      onpressed: () {
+                        Navigator.pushNamed(context, '/otp');
+                      },
+                      color: Colors.transparent,
+                    ),
                   ],
                 ),
-                SizedBox(height: 22),
-                WhiteCustomButton(
-                  text: 'Sign Up with Google',
-                  onpressed: () {
-                    Navigator.pushNamed(context, '/otp');
-                  },
-                  color: Colors.transparent,
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

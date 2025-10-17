@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
-import 'package:marketa_new/helpers/widgets/custom_button.dart';
 import 'package:marketa_new/helpers/widgets/custom_textform_field.dart';
 import 'package:marketa_new/presentation/authentication/bloc/auth_states.dart';
 import 'package:marketa_new/presentation/authentication/components/password_reset_component.dart';
@@ -69,9 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
       listener: (context, state) {
         if (state is AuthAuthenticated) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Welcome back, ${state.user!.name}!")),
+            SnackBar(content: Text("Welcome back ${state.username}!")),
           );
-          Navigator.pushReplacementNamed(context, "/mainhome");
+          Navigator.pop(context);
         }
         if (state is AuthError) {
           WidgetsBinding.instance.addPostFrameCallback((_) {

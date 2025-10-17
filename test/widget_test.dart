@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:marketa_new/main.dart';
 import 'package:marketa_new/marketa_app.dart';
 
 void main() {

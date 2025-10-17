@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/presentation/category/pages/category.dart';
+import 'package:marketa_new/presentation/products/bloc/products_bloc.dart';
 import '../../../helpers/images/image_helpers.dart';
 import '../components/home_component.dart';
 
@@ -20,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    context.read<ProductsBloc>().add(LoadProductsEvent());
     super.initState();
   }
 
@@ -31,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    
     return DefaultTabController(
       length: 2,
       child: Scaffold(

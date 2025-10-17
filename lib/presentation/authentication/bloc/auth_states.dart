@@ -15,7 +15,8 @@ class AuthLoading extends AuthState {
 class AuthAuthenticated extends AuthState {
   final UserModel? user;
   final String? message;
-  AuthAuthenticated([this.user, this.message]);
+  final String? username;
+  AuthAuthenticated([this.user, this.message, this.username]);
 }
 
 class AuthSuccess extends AuthState {
