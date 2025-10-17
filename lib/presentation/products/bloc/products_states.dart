@@ -13,12 +13,6 @@ class ProductSuccess extends ProductState {
   ProductSuccess(this.products, {required this.message});
 }
 
-class SingleProductSuccess extends ProductState {
-  final Product product;
-
-  SingleProductSuccess(this.product);
-}
-
 class ProductFailure extends ProductState {
   final String error;
 

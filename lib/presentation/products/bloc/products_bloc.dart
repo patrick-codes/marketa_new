@@ -11,7 +11,6 @@ class ProductsBloc extends Bloc<ProductEvent, ProductState> {
 
   ProductsBloc() : super(ProductInitial()) {
     on<LoadProductsEvent>(_loadProducts);
-    on<LoadSingleProductEvent>(_loadSingleProduct);
     on<BookmarkProductEvent>(_bookmarkProduct);
   }
 
@@ -25,19 +24,6 @@ class ProductsBloc extends Bloc<ProductEvent, ProductState> {
         message: 'Products fetched successfully!',
       ));
       debugPrint('Products Loaded:$products');
-    } catch (e) {
-      emit(ProductFailure(error: e.toString()));
-      debugPrint('Error:${e.toString()}');
-    }
-  }
-
-  Future<void> _loadSingleProduct(
-      LoadSingleProductEvent event, Emitter<ProductState> emit) async {
-    emit(ProductsLoading());
-    try {
-      final product = await productRepo.fetchProductById(event.productId);
-      emit(SingleProductSuccess(product));
-      debugPrint('Products Loaded:$product');
     } catch (e) {
       emit(ProductFailure(error: e.toString()));
       debugPrint('Error:${e.toString()}');

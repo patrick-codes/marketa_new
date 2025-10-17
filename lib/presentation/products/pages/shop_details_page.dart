@@ -3,22 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'package:marketa_new/helpers/color/colors.dart';
 import 'package:marketa_new/helpers/text%20style/text_style.dart';
 import 'package:marketa_new/helpers/widgets/cedi_widget.dart';
 import 'package:marketa_new/helpers/widgets/custom_bottomnav_button.dart';
-
-import '../../../helpers/images/image_helpers.dart';
 import '../../../helpers/widgets/custom_appbar.dart';
-import '../bloc/products_bloc.dart';
+import '../bloc/product detail bloc/product_detail_bloc.dart';
 
 class ShopDetailsPage extends StatefulWidget {
   final String id;
   const ShopDetailsPage({
-    Key? key,
+    super.key,
     required this.id,
-  }) : super(key: key);
+  });
 
   static final _controller = PageController();
 
@@ -27,22 +24,17 @@ class ShopDetailsPage extends StatefulWidget {
 }
 
 class _ShopDetailsPageState extends State<ShopDetailsPage> {
-  final List<String> imgs = <String>[
-    itemImg1,
-    itemImg2,
-    itemImg3,
-  ];
   @override
   void initState() {
-    context.read<ProductsBloc>().add(LoadSingleProductEvent(widget.id));
+    context.read<ProductDetailBloc>().add(LoadSingleProductEvent(widget.id));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProductsBloc, ProductState>(
+    return BlocConsumer<ProductDetailBloc, ProductDetailState>(
       listener: (context, state) {
-        if (state is ProductFailure) {
+        if (state is SingleProductFailure) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -53,7 +45,7 @@ class _ShopDetailsPageState extends State<ShopDetailsPage> {
         }
       },
       builder: (context, state) {
-        if (state is ProductsLoading) {
+        if (state is ProductDetailLoading) {
           return Container(
             color: whiteColor,
             height: MediaQuery.of(context).size.width,

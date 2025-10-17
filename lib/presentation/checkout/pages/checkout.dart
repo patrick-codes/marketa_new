@@ -9,6 +9,7 @@ import '../../../helpers/widgets/custom_appbar.dart';
 import '../../../helpers/widgets/custom_button.dart';
 import '../../authentication/bloc/auth_events.dart';
 import '../components/checkout_component.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CheckOutPage extends StatefulWidget {
   const CheckOutPage({super.key});
@@ -92,114 +93,138 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 SizedBox(height: 8),
                 CustomButton(
                   text: 'Checkout Now',
-                  onpressed: () {
-                    if (state is AuthAuthenticated) {
-                      CheckoutComponent.orderSuccesScrollBottomSheet(
-                          context, key);
-                    } else {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor: Colors.white,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(8.0),
-                                bottom: Radius.circular(8),
-                              ),
-                            ),
-                            title: Center(
-                              child: headingTextMedium(
-                                context,
-                                'Action Needed!',
-                                FontWeight.bold,
-                                16,
-                                Colors.red,
-                              ),
-                            ),
-                            content: SizedBox(
-                              height: 150,
-                              child: Column(
-                                children: [
-                                  headingTextMedium(
-                                    context,
-                                    'Login or register an account to continue checking out',
-                                    FontWeight.w500,
-                                    12,
-                                  ),
-                                  SizedBox(height: 13.5),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      Navigator.pushNamed(context, '/login');
-                                    },
-                                    child: Container(
-                                      height: 45,
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        border: Border.all(
-                                          color: primaryColor,
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: headingTextMedium(
-                                          context,
-                                          'Login',
-                                          FontWeight.w600,
-                                          12,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 12),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      Navigator.pushNamed(context, '/signup');
-                                    },
-                                    child: Container(
-                                      height: 45,
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        border: Border.all(
-                                          color: primaryColor,
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: headingTextMedium(
-                                          context,
-                                          'Signup',
-                                          FontWeight.w600,
-                                          12,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            actions: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: headingTextMedium(
-                                  context,
-                                  'Cancel',
-                                  FontWeight.w600,
-                                  12,
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
-                  },
-                  // CheckoutComponent.orderSuccesScrollBottomSheet(context, key);
+                  onpressed: () async {
+                    debugPrint("Pressed Checkout");
+                    final checkoutUrl =
+                        'https://checkout.paystack.com/oi28iw83w1xeoot';
+                    try {
+                      final Uri paystackUri = Uri.parse(checkoutUrl);
 
+                      // Open in external browser (e.g. Chrome, Safari)
+                      if (!await launchUrl(
+                        paystackUri,
+                        mode: LaunchMode.externalApplication,
+                      )) {
+                        throw Exception('Could not launch Paystack checkout');
+                      }
+
+                      // Optional: Show a snackbar or loading screen if needed
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Redirecting to Paystack...'),
+                        ),
+                      );
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error: ${e.toString()}'),
+                        ),
+                      );
+                    } // if (state is AuthAuthenticated) {
+                    //   CheckoutComponent.orderSuccesScrollBottomSheet(
+                    //       context, key);
+                    // } else {
+                    //   showDialog(
+                    //     context: context,
+                    //     builder: (BuildContext context) {
+                    //       return AlertDialog(
+                    //         backgroundColor: Colors.white,
+                    //         shape: const RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.vertical(
+                    //             top: Radius.circular(8.0),
+                    //             bottom: Radius.circular(8),
+                    //           ),
+                    //         ),
+                    //         title: Center(
+                    //           child: headingTextMedium(
+                    //             context,
+                    //             'Action Needed!',
+                    //             FontWeight.bold,
+                    //             16,
+                    //             Colors.red,
+                    //           ),
+                    //         ),
+                    //         content: SizedBox(
+                    //           height: 150,
+                    //           child: Column(
+                    //             children: [
+                    //               headingTextMedium(
+                    //                 context,
+                    //                 'Login or register an account to continue checking out',
+                    //                 FontWeight.w500,
+                    //                 12,
+                    //               ),
+                    //               SizedBox(height: 13.5),
+                    //               GestureDetector(
+                    //                 onTap: () {
+                    //                   Navigator.pop(context);
+                    //                   Navigator.pushNamed(context, '/login');
+                    //                 },
+                    //                 child: Container(
+                    //                   height: 45,
+                    //                   width: MediaQuery.of(context).size.width,
+                    //                   decoration: BoxDecoration(
+                    //                     borderRadius: BorderRadius.circular(25),
+                    //                     border: Border.all(
+                    //                       color: primaryColor,
+                    //                     ),
+                    //                   ),
+                    //                   child: Center(
+                    //                     child: headingTextMedium(
+                    //                       context,
+                    //                       'Login',
+                    //                       FontWeight.w600,
+                    //                       12,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //               SizedBox(height: 12),
+                    //               GestureDetector(
+                    //                 onTap: () {
+                    //                   Navigator.pop(context);
+                    //                   Navigator.pushNamed(context, '/signup');
+                    //                 },
+                    //                 child: Container(
+                    //                   height: 45,
+                    //                   width: MediaQuery.of(context).size.width,
+                    //                   decoration: BoxDecoration(
+                    //                     borderRadius: BorderRadius.circular(25),
+                    //                     border: Border.all(
+                    //                       color: primaryColor,
+                    //                     ),
+                    //                   ),
+                    //                   child: Center(
+                    //                     child: headingTextMedium(
+                    //                       context,
+                    //                       'Signup',
+                    //                       FontWeight.w600,
+                    //                       12,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         actions: [
+                    //           GestureDetector(
+                    //             onTap: () {
+                    //               Navigator.pop(context);
+                    //             },
+                    //             child: headingTextMedium(
+                    //               context,
+                    //               'Cancel',
+                    //               FontWeight.w600,
+                    //               12,
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       );
+                    //     },
+                    //   );
+                    // }
+                  },
                   color: primaryColor,
                 ),
               ],
